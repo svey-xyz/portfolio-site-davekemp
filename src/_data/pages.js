@@ -3,7 +3,7 @@ const groq = require('groq')
 const slugify = require('slugify')
 
 module.exports = async () => {
-	const defaultPageQuery = groq`{
+	const blocksPageQuery = groq`{
 			...,
 			blocks[]{
 				_type,
@@ -44,7 +44,7 @@ module.exports = async () => {
 			description,
 			"template":pageType,
 			"content":select(
-				pageType == "defaultPage" => defaultPage${defaultPageQuery},
+				pageType == "blocksPage" => blocksPage${blocksPageQuery},
 				pageType == "homePage" => homePage${homePageQuery}
 			)
 		}`

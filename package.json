@@ -10,7 +10,7 @@
 		"dev:webpack": "NODE_ENV=development webpack --config ./config/webpack.config.js --watch --progress",
 		"dev:postcss": "NODE_ENV=development TAILWIND_MODE=watch postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css --watch --verbose",
 		"dev:eleventy": "NODE_ENV=development eleventy --serve",
-		"develop": "npm-run-all clean:build --parallel dev:*",
+		"dev": "npm-run-all clean:build --parallel dev:*",
 		"build:webpack": "NODE_ENV=production webpack --config ./config/webpack.config.js",
 		"build:postcss": "NODE_ENV=production postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css",
 		"build:eleventy": "NODE_ENV=production eleventy",
@@ -70,7 +70,7 @@
 		"not op_mini all"
 	],
 	"dependencies": {
-		"@portabletext/to-html": "^1.0.3",
+		"@portabletext/to-html": "^1.0.4",
 		"color": "^4.2.3",
 		"dotenv": "^16.0.0",
 		"htm": "^3.1.1",

@@ -1,16 +1,16 @@
 @layer base {
 	h1, h2, h3, h4, h5, h6 {
-		@apply font-heading text-center leading-normal text-primary-text;
+		@apply font-heading leading-normal text-primary-text;
 	}
 
 	h1 {
-		@apply text-6xl font-semibold;
+		@apply text-3xl font-medium;
 	}
 	h2 {
-		@apply text-4xl font-semibold;
+		@apply text-2xl font-semibold;
 	}
 	h5 {
-		@apply text-left font-bold font-body text-primary-text text-3xl;
+		@apply text-left font-bold font-body text-primary-text text-xl;
 	}
 	h6 {
 		@apply text-left font-normal font-body text-primary-text text-lg;

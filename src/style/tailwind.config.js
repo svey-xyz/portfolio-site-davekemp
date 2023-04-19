@@ -67,7 +67,7 @@ module.exports = {
 				'md-dark': '0px 1px 2px rgb(30 29 39 / 0.5), 1px 2px 4px rgb(54 64 147 / 0.5)'
 			},
 			fontFamily: {
-				heading: ['DM Serif Display', 'serif'],
+				heading: ['Montserrat', 'sans-serif'],
 				body: ['Montserrat', 'sans-serif']
 			},
 			lineHeight: {

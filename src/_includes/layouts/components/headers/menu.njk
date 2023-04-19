@@ -3,19 +3,16 @@
 #}
 
 <div id="menu-container" class="fixed z-40 min-w-full min-h-full pointer-events-none invisible
-	after:absolute after:inset-0 after:bg-primary-accent after:transition-opacity after:duration-300 after:opacity-0 after:-z-1">
+	after:absolute after:inset-0 after:bg-secondary-bg after:transition-opacity after:duration-300 after:opacity-0 after:-z-1">
 
-	<div id="menu" class="max-w-screen-xl mx-auto px-0 md:px-24 flex md:block-padding h-screen md:h-auto transition-opacity duration-200 opacity-0 z-10">
-		<div class="transition-all duration-500 flex flex-col md:justify-center z-10 w-full overflow-hidden bg-primary-bg md:flex-row md:rounded-xl shadow-md">
-			{# IDENTITY CONTAINER #}
-			<div id="identity-container" class="transition-spacing duration-500 filter border-b-2 bg-secondary-bg px-6 py-6 sm:px-12 md:px-6 lg:px-12 md:border-b-0 md:border-r-2 border-secondary-accent shadow-md md:shadow-lg z-10">
-				{% image site.theme.logo, "lazy relative m-0 h-auto w-16 md:w-24", 'Site Logo' %}
-			</div>
+	<div id="menu" class="flex h-screen md:h-auto transition-opacity duration-200 opacity-0 z-10">
+		<div class="transition-all duration-500 flex flex-col md:justify-center z-10 w-full overflow-hidden md:flex-row">
 
 			{# RIGHT SIDE WRAPPER #}
-			<div class="relative transition-spacing duration-500 flex flex-col p-6 bg-gradient-to-b md:bg-gradient-to-r from-secondary-bg via-primary-bg to-primary-bg w-full px-6 sm:px-12">
+			<div class="relative transition-spacing duration-500 flex flex-col py-6 bg-secondary-bg w-full
+				after:absolute after:left-0 after:right-0 after:bottom-0 after:mt-0.5 after:h-0.5 after:bg-primary-border">
 				{# NAVIGATION CONTAINER #}
-				<div class="relative flex h-full flex-col md:flex-row justify-start md:items-center flex-wrap space-be">
+				<div class="relative flex w-screen main-padding h-full flex-col md:flex-row flex-wrap space-between">
 					{% for navItem in site.navigation.primaryNavigation %}
 						{% set navLink %}
 							{% if navItem.slug == site.navigation.homePageSlug %}
@@ -27,28 +24,16 @@
 						<div class="relative md:inline-block group py-4 pr-16">
 							<h6 class="relative z-10"><a href="/{{ navLink | slug }}" class="relative z-10 duration-200
 								text-primary-text rounded-md
-								group-hover:text-primary-bg
-								after:bg-gradient-to-r after:from-primary-accent after:to-secondary-accent
-								after:absolute after:left-[-5%] after:right-0 after:bottom-[-12.5%] after:overflow-hidden after:rounded-sm after:-z-1
-								after:transition-all after:duration-200 after:h-1 group-hover:after:h-[125%]">
+								group-hover:text-primary-bg">
 								{{ navItem.title }}
 							</a></h6>
 						</div>	
 					{% endfor %}
+					<div class="w-full z-10">
+						{% include ("layouts/components/footers/footer-content.njk") %}
+					</div>
 				</div>
-				<div class="md:hidden">
-					{% include "../../utilities/emailInsert.njk" %}
-				</div>
-			</div>
-
-			<div class="main-padding w-full z-10 fixed bottom-0">
-				{% set iconColour %}
-				{% endset %}
-				{% include ("layouts/components/footers/menu-footer.njk") %}
 			</div>
 		</div>
-	</div>
-	<div class="main-padding">
-		{% include "../../utilities/emailInsert.njk" %}
 	</div>
 </div>

@@ -3,7 +3,7 @@
 #}
 
 <header id="header">
-	<div class="fixed top-0 z-50 min-w-full bg-secondary-bg shadow-md dark:shadow-lg">
+	<div class="fixed top-0 z-50 min-w-full bg-primary-bg">
 		<div class="main-padding flex flex-row justify-between overflow-hidden w-screen pt-header pb-header">
 			<a aria-label="Site Title" class="font-bold whitespace-nowrap" href="/">
 				<svg xmlns="http://www.w3.org/2000/svg"
@@ -12,33 +12,35 @@
 					<text x="0" y="20" 
 							fill="white"
 							font-family="'Montserrat', sans-serif"
-							font-weight="800"
+							font-weight="600"
 							font-size="25">
 						{{ site.siteSettings.title }}
 					</text>
 				</svg>
 			</a>
 			<label class="group relative w-[var(--header-item-height)] h-[var(--header-item-height)] block z-10 cursor-pointer">
-				<input aria-label="Root Menu Button" id="menuSwitch" type="checkbox" class="absolute left-1/2 -translate-x-1/2 w-full h-full appearance-none
-					cursor-pointer transition-all duration-200
-					origin-center
-					before:relative before:origin-center before:rounded-full before:inline-block before:w-full before:h-full
-					before:border-medium-accent before:border-solid before:border-4
-					motion-safe:group-hover:before:animate-breathing
+				<input aria-label="Root Menu Button" id="menuSwitch" type="checkbox" class="left-1/2 -translate-x-1/2 appearance-none
+					cursor-pointer transition-all translate-y-0.5
 
-					after:absolute after:origin-center after:left-1/2 after:top-1/2 after:w-1/3 after:h-1/3 after:rounded-full after:-z-1
-					after:bg-medium-accent after:border-medium-accent after:border-solid after:border
-					after:transition-transform after:duration-200 after:-translate-x-1/2 after:-translate-y-1/2
-					motion-safe:after:animate-pulse
+					before:relative before:origin-center before:rounded before:block before:w-full before:h-1 before:bg-opposite-bg before:-top-2
 
-					group-hover:scale-110
+					relative origin-center rounded block w-full h-1 bg-opposite-bg top-2
 
-					checked:after:accent-background checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:scale-[3.0]"/>
+					after:relative after:origin-center after:rounded after:block after:w-full after:h-1 after:bg-opposite-bg after:top-1
+
+					motion-safe:group-hover:scale-110
+
+					duration-0 before:duration-200 after:duration-200
+
+					checked:h-0
+					checked:before:-rotate-45 checked:before:top-0 checked:before:accent-background
+					checked:after:rotate-45 checked:after:-top-1 
+				"/>
 			</label>	
 		</div>
 
-		<div class="absolute left-0 right-0 bottom-0 mt-0.5 h-0.5 bg-secondary-bg"></div>
-		<div id="scrollProgressBar" class="absolute left-0 bottom-0 mt-0.5 h-0.5 bg-gradient-to-r from-primary-accent to-secondary-accent"></div>
+		<div class="absolute left-0 right-0 bottom-0 mt-0.5 h-0.5 bg-opposite-bg"></div>
+		{# <div id="scrollProgressBar" class="absolute left-0 bottom-0 mt-0.5 h-0.5 bg-gradient-to-r from-primary-accent to-secondary-accent"></div> #}
 	</div>
 
 	<div class="relative w-full h-[var(--header-total-height)] min-h-[var(--header-total-height)]"></div>

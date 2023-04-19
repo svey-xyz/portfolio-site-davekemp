@@ -4,10 +4,10 @@
 	}
 
 	h1 {
-		@apply text-6xl font-extrabold;
+		@apply text-6xl font-semibold;
 	}
 	h2 {
-		@apply text-4xl font-bold;
+		@apply text-4xl font-semibold;
 	}
 	h5 {
 		@apply text-left font-bold font-body text-primary-text text-3xl;

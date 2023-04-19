@@ -18,7 +18,13 @@
 	{% endif %}
 {% endset %}
 
-<div class="relative flex align-center justify-center w-full main-padding">
+
+
+<div class="relative flex flex-col w-full main-padding">
+	<a href="mailto:{{ site.about.email }}" class="relative font-light underline leading-normal pb-8">
+		{{ site.about.email }}
+	</a>
+
 	<form id="formContainer" class="vldx-form w-full max-w-prose-full mb-8" name="{{ formName | slug }}"
 		method="POST" action="https://contact.svey.xyz/" data-vldx-success-message="{{ successMessage }}" data-vldx-recaptcha="6LfhR1ohAAAAABJFXPocs9NyudnQgvZNDH1DtQ3c">
 
@@ -31,39 +37,36 @@
 			</label>
 		</div>
 		
-		<div class="w-full mb-12">
-			{# <label for="name" class="block mb-4 tracking-wider font-semibold leading-normal">Name <span class="align-super text-failure-accent">*</span></label> #}
+		<div class="w-full mb-8">
+			<label for="name" class="block mb-4 tracking-wider font-medium leading-none">Name <span class="align-super text-failure-accent">*</span></label>
 			<input type="text" id="name" name="name" placeholder="Name"
-				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
+				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text outline-2 outline-primary-border outline focus:outline-primary-border
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
 				data-vldx-rules="required" />
 		</div>
 
-		<div class="w-full mb-12">
-			{# <label for="email" class="block mb-4 tracking-wider font-semibold leading-normal">Email <span class="align-super text-failure-accent">*</span></label> #}
+		<div class="w-full mb-8">
+			<label for="email" class="block mb-4 tracking-wider font-medium leading-none">Email <span class="align-super text-failure-accent">*</span></label>
 			<input type="email" id="email" name="email" placeholder="Email"
-				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
+				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text outline-2 outline-primary-border outline focus:outline-primary-border
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent" 
 				data-vldx-rules="email|required" />
 		</div>
 
-		<div class="w-full mb-12">
-			{# <label for="message" class="block mb-4 tracking-wider font-semibold leading-normal">Message <span class="align-super text-failure-accent">*</span></label> #}
+		<div class="w-full mb-8">
+			<label for="message" class="block mb-4 tracking-wider font-medium leading-none">Message <span class="align-super text-failure-accent">*</span></label>
 			<textarea id="message" name="message" rows="6" maxlength="3000" placeholder="Message"
-				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
+				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text outline-2 outline-primary-border outline focus:outline-primary-border
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
-				></textarea>
+				data-vldx-rules="required" ></textarea>
 		</div>
 
-		<div class="block md:inline mb-12">
-			<div class="relative py-4 md:inline-block md:pr-16">
-				<button class="vldx-submit g-recaptcha relative block px-4 py-2 w-full bg-secondary-bg text-primary-text rounded-md font-semibold overflow-hidden
-					shadow-inner transition-all duration-200
-					after:bg-gradient-to-r after:from-primary-accent after:to-secondary-accent after:shadow-inner-dark
-					after:absolute after:left-0 after:right-0 after:bottom-0 after:overflow-hidden
-					after:transition-all after:duration-200 after:h-0 hover:after:h-full hover:text-primary-bg
-					before:absolute before:inset-0 before:bg-primary-bg before:opacity-0 active:opacity-60
-					focus:outline-none"
+		<div class="block md:inline mb-8">
+			<div class="relative md:inline-block md:pr-16">
+				<button class="vldx-submit g-recaptcha relative block px-12 py-2 w-full bg-secondary-bg text-primary-text font-medium overflow-hidden 
+					transition-all duration-200
+					active:opacity-60
+					outline-2 outline-primary-border outline focus:outline-primary-border"
         			data-callback='onSubmit' 
        				data-action='submit'>
 						<span class="relative z-10">Send</span>

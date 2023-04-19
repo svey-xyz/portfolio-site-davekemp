@@ -1,7 +1,7 @@
 
 export class theme {
 	height: number;
-	themeSwitch: HTMLInputElement;
+	themeSwitchers: NodeListOf<HTMLInputElement>;
 
 	primaryBg: colour
 	primaryAccent: colour
@@ -15,12 +15,15 @@ export class theme {
 	constructor() {
 		this.mobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
 
-		this.themeSwitch = <HTMLInputElement>document.querySelector('#themeSwitcher');
-		this.themeSwitch.addEventListener("click", () => {
-			let theme = this.themeSwitch.checked ? 'light' : 'dark';
-			localStorage.setItem('preferredTheme', theme);
-			this.switchTheme(theme);
+		this.themeSwitchers = <NodeListOf<HTMLInputElement>>document.querySelectorAll('#themeSwitcher');
+		this.themeSwitchers.forEach(themeSwitch => {
+			themeSwitch.addEventListener("click", () => {
+				let theme = themeSwitch.checked ? 'light' : 'dark';
+				localStorage.setItem('preferredTheme', theme);
+				this.switchTheme(theme);
+			});
 		});
+		
 
 		this.height = window.innerHeight;
 		this.vh = this.height * 0.01;
@@ -49,8 +52,9 @@ export class theme {
 
 		localStorage.setItem('theme', theme);
 		document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
-		this.themeSwitch.checked = theme === 'light';
-
+		this.themeSwitchers.forEach(themeSwitch => {
+			themeSwitch.checked = theme === 'light';
+		});
 	}
 
 	setSize() {

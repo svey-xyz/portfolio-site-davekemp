@@ -13,7 +13,7 @@
 		@apply text-left font-bold font-body text-primary-text text-3xl;
 	}
 	h6 {
-		@apply text-left font-bold font-body text-primary-text text-2xl;
+		@apply text-left font-normal font-body text-primary-text text-lg;
 	}
 	p {
 		@apply mb-6 text-primary-text;

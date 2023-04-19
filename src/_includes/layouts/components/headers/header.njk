@@ -4,7 +4,8 @@
 
 <header id="header">
 	<div class="fixed top-0 z-50 min-w-full bg-primary-bg">
-		<div class="main-padding flex flex-row justify-between overflow-hidden w-screen pt-header pb-header">
+		<div class="main-padding relative flex flex-row w-screen pt-header pb-header flex-nowrap items-stretch">
+
 			<a aria-label="Site Title" class="font-bold whitespace-nowrap" href="/">
 				<svg xmlns="http://www.w3.org/2000/svg"
 					class="svg-theme-colour"
@@ -18,31 +19,42 @@
 					</text>
 				</svg>
 			</a>
-			<label class="group relative w-[var(--header-item-height)] h-[var(--header-item-height)] block z-10 cursor-pointer">
-				<input aria-label="Root Menu Button" id="menuSwitch" type="checkbox" class="left-1/2 -translate-x-1/2 appearance-none
-					cursor-pointer transition-all translate-y-0.5
 
-					before:relative before:origin-center before:rounded before:block before:w-full before:h-1 before:bg-opposite-bg before:-top-2
+			<div id="headerContentSpacer" class="w-auto grow self-stretch"></div>
 
-					relative origin-center rounded block w-full h-1 bg-opposite-bg top-2
+			<div id="headerNav" class="relative flex flex-row">
+				{% include ("layouts/components/headers/menuItems.njk") %}
+			</div>
 
-					after:relative after:origin-center after:rounded after:block after:w-full after:h-1 after:bg-opposite-bg after:top-1
+			<div class="main-padding absolute left-0 right-0 flex justify-end">
+				<label class="group relative right-0 w-[var(--header-item-height)] h-[var(--header-item-height)] z-10 cursor-pointer block">
+					<input aria-label="Root Menu Button" id="menuSwitch" type="checkbox" class="left-1/2 -translate-x-1/2 appearance-none
+						cursor-pointer transition-all translate-y-0.5
 
-					motion-safe:group-hover:scale-110
+						before:relative before:origin-center before:rounded before:block before:w-full before:h-1 before:bg-opposite-bg before:-top-2
 
-					duration-0 before:duration-200 after:duration-200
+						relative origin-center block rounded w-full h-1 bg-opposite-bg top-2
 
-					checked:h-0
-					checked:before:-rotate-45 checked:before:top-0 checked:before:accent-background
-					checked:after:rotate-45 checked:after:-top-1 
-				"/>
-			</label>	
+						after:relative after:origin-center after:rounded after:block after:w-full after:h-1 after:bg-opposite-bg after:top-1
+
+						motion-safe:group-hover:scale-110
+
+						duration-0 before:duration-200 after:duration-200
+
+						checked:h-0
+						checked:before:-rotate-45 checked:before:top-0 checked:before:accent-background
+						checked:after:rotate-45 checked:after:-top-1 
+
+						hidden
+					"/>
+				</label>	
+			</div>
 		</div>
 
 		<div class="absolute left-0 right-0 bottom-0 mt-0.5 h-0.5 bg-opposite-bg"></div>
-		{# <div id="scrollProgressBar" class="absolute left-0 bottom-0 mt-0.5 h-0.5 bg-gradient-to-r from-primary-accent to-secondary-accent"></div> #}
 	</div>
 
+	{# PADDING #}
 	<div class="relative w-full h-[var(--header-total-height)] min-h-[var(--header-total-height)]"></div>
 
 	{% include ("layouts/components/headers/menu.njk") %}

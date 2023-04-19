@@ -7,6 +7,7 @@ export const mount = (container: HTMLElement) => {
 
 	menuSwitch.addEventListener("click", switchMenu);
 	switchMenu(null);
+	switchLayout();
 
 	document.addEventListener("keydown", function (event) {
 		const key = event.key; // Or const {key} = event; in ES6+
@@ -15,8 +16,25 @@ export const mount = (container: HTMLElement) => {
 		}
 	});
 
-	window.onscroll = utils.domUtils.debounce(function () { scrollIndicator() })
-	window.addEventListener("resize", utils.domUtils.debounce(scrollIndicator));
+	window.addEventListener("resize", utils.domUtils.debounce(switchLayout));
+}
+
+function switchLayout() {
+	const headerContentSpacer = (header.querySelector('#headerContentSpacer') as HTMLElement);
+	const headerNav = (header.querySelector('#headerNav') as HTMLElement);
+
+	if (headerContentSpacer?.offsetWidth <= 10) {
+		// switchMenu(null, false);
+		headerNav.classList.add('invisible')
+		menuSwitch.classList.remove('hidden')
+
+		// console.log('here')
+	} else {
+		headerNav.classList.remove('invisible')
+		switchMenu(null, false);
+		menuSwitch.classList.add('hidden')
+
+	}
 }
 
 function switchMenu(e: Event | null, force?:boolean) {
@@ -32,11 +50,4 @@ function switchMenu(e: Event | null, force?:boolean) {
 
 	header.classList[menuState ? 'add' : 'remove']('menu-open');
 	menuSwitch.checked = menuState;
-}
-
-function scrollIndicator() {
-	var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-	var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-	var scrolled = (winScroll / height) * 100;
-	document.getElementById('scrollProgressBar')!.style.width = scrolled + "%";
 }

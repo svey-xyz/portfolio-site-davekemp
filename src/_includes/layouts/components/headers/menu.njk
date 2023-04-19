@@ -9,27 +9,12 @@
 		<div class="transition-all duration-500 flex flex-col md:justify-center z-10 w-full overflow-hidden md:flex-row">
 
 			{# RIGHT SIDE WRAPPER #}
-			<div class="relative transition-spacing duration-500 flex flex-col py-6 bg-secondary-bg w-full
+			<div class="relative transition-spacing duration-500 flex flex-col py-6 bg-secondary-bg w-full pt-10
 				after:absolute after:left-0 after:right-0 after:bottom-0 after:mt-0.5 after:h-0.5 after:bg-primary-border">
 				{# NAVIGATION CONTAINER #}
-				<div class="relative flex w-screen main-padding h-full flex-col md:flex-row flex-wrap space-between">
-					{% for navItem in site.navigation.primaryNavigation %}
-						{% set navLink %}
-							{% if navItem.slug == site.navigation.homePageSlug %}
-								''
-							{% else %}
-								{{ navItem.slug }}
-							{% endif%}
-						{% endset %}
-						<div class="relative md:inline-block group py-4 pr-16">
-							<h6 class="relative z-10"><a href="/{{ navLink | slug }}" class="relative z-10 duration-200
-								text-primary-text rounded-md
-								group-hover:text-primary-bg">
-								{{ navItem.title }}
-							</a></h6>
-						</div>	
-					{% endfor %}
-					<div class="w-full z-10">
+				<div class="relative flex w-screen main-padding h-full flex-col flex-wrap space-y-4">
+					{% include ("layouts/components/headers/menuItems.njk") %}
+					<div class="w-full z-10 pt-10">
 						{% include ("layouts/components/footers/footer-content.njk") %}
 					</div>
 				</div>

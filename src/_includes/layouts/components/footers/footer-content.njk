@@ -3,7 +3,7 @@
 #}
 
 <div class="z-10 transition-spacing duration-500">
-	<div class="block-padding flex flex-row justify-between">
+	<div class="flex flex-row justify-between">
 		{% for social in site.about.social %}
 			{% set socialIcon %}
 				{% switch social.socialType %}
@@ -14,13 +14,11 @@
 				{% endswitch %}
 			{% endset %}
 			<a aria-label="{{ social.socialType }} - {{ social.socialTitle }}" class="group relative mr-4 md:mr-8" target="_blank" rel="noreferrer" href="{{ social.url }}">
-				<i class="{{ socialIcon }} relative text-medium-accent text-4xl duration-100 group-hover:scale-110 z-10
-						after:accent-highlight after:shadow-sm group-hover:after:shadow-md">
-				</i>	
+				<i class="{{ socialIcon }} relative text-medium-accent text-4xl duration-100 group-hover:scale-110 z-10"></i>	
 			</a>	
 		{% endfor %}
 
-		<label class="group cursor-pointer relative flex items-center justify-center text-primary-text leading-xs w-10 h-10 text-3xl">
+		<label class="group cursor-pointer relative flex items-center justify-center text-medium-accent leading-xs w-10 h-10 text-3xl">
 			<input aria-label="Theme Switcher" id="themeSwitcher" type="checkbox" class="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none cursor-pointer"/>
 			<i class="fas fa-circle-half-stroke group-hover:rotate-12 group-hover:scale-110 duration-200"></i>
 			{# <i class="fas fa-solid fa-sun"></i> #}

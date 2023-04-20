@@ -27,27 +27,8 @@
 			</div>
 
 			<div class="main-padding absolute left-0 right-0 flex justify-end">
-				<label class="group relative right-0 w-[var(--header-item-height)] h-[var(--header-item-height)] z-10 cursor-pointer block">
-					<input aria-label="Root Menu Button" id="menuSwitch" type="checkbox" class="left-1/2 -translate-x-1/2 appearance-none
-						cursor-pointer transition-all translate-y-0.5
-
-						before:relative before:origin-center before:rounded before:block before:w-full before:h-1 before:bg-opposite-bg before:-top-2
-
-						relative origin-center block rounded w-full h-1 bg-opposite-bg top-2
-
-						after:relative after:origin-center after:rounded after:block after:w-full after:h-1 after:bg-opposite-bg after:top-1
-
-						motion-safe:group-hover:scale-110
-
-						duration-0 before:duration-200 after:duration-200
-
-						checked:h-0
-						checked:before:-rotate-45 checked:before:top-0 checked:before:accent-background
-						checked:after:rotate-45 checked:after:-top-1 
-
-						hidden
-					"/>
-				</label>	
+				{% include ("layouts/components/headers/mneuButton.njk") %}
+				
 			</div>
 		</div>
 

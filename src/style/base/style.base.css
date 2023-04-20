@@ -23,8 +23,7 @@
 	}
 	
 	a {
-		@apply tracking-wider;
-		color: inheret;
+		@apply tracking-wider text-primary-text;
 	}
 
 	label {

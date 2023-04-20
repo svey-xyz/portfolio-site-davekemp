@@ -6,10 +6,10 @@
 	<div class="fixed top-0 z-50 min-w-full bg-primary-bg">
 		<div class="main-padding relative flex flex-row w-screen pt-header pb-header flex-nowrap items-stretch">
 
-			<a aria-label="Site Title" class="font-bold whitespace-nowrap" href="/">
+			<a aria-label="Site Title" class="font-bold whitespace-nowrap z-10" href="/">
 				<svg xmlns="http://www.w3.org/2000/svg"
 					class="svg-theme-colour"
-					width="250px" height="25px" viewBox="0 0 250 25">
+					width="auto" height="25px" viewBox="0 0 175 25">
 					<text x="0" y="20" 
 							fill="white"
 							font-family="'Montserrat', sans-serif"
@@ -22,12 +22,12 @@
 
 			<div id="headerContentSpacer" class="w-auto grow self-stretch"></div>
 
-			<div id="headerNav" class="relative flex flex-row">
+			<div id="headerNav" class="relative flex flex-row z-10">
 				{% include ("layouts/components/headers/menuItems.njk") %}
 			</div>
 
-			<div class="main-padding absolute left-0 right-0 flex justify-end">
-				{% include ("layouts/components/headers/mneuButton.njk") %}
+			<div class="main-padding absolute left-0 right-0 flex justify-end z-0">
+				{% include ("layouts/components/headers/menuButton.njk") %}
 				
 			</div>
 		</div>

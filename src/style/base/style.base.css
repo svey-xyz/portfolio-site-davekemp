@@ -31,7 +31,7 @@
 	}
 
 	.main-padding {
-		@apply max-w-screen-xl mx-auto px-6 sm:px-12 md:px-24;
+		@apply max-w-screen-xl mx-auto px-6 sm:px-12 md:px-24 transition-spacing duration-200;
 	}
 
 	.block-padding {

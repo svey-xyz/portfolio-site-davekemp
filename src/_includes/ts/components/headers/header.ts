@@ -23,13 +23,13 @@ function switchLayout() {
 	const headerContentSpacer = (header.querySelector('#headerContentSpacer') as HTMLElement);
 	const headerNav = (header.querySelector('#headerNav') as HTMLElement);
 
-	if (headerContentSpacer?.offsetWidth <= 10) {
+	if (headerContentSpacer?.offsetWidth <= 20) {
 		// switchMenu(null, false);
 		headerNav.classList.add('invisible')
 		menuSwitch.classList.remove('hidden')
 
 		// console.log('here')
-	} else {
+	} else if (headerContentSpacer?.offsetWidth >= 50) {
 		headerNav.classList.remove('invisible')
 		switchMenu(null, false);
 		menuSwitch.classList.add('hidden')

@@ -11,3 +11,9 @@
 .plyr {
 	@apply absolute inset-0;
 }
+
+.tag-button {
+	&.active {
+		@apply !text-primary-accent;
+	}
+}

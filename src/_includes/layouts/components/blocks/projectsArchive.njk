@@ -11,17 +11,17 @@
 {%- set filterTags = projects.tags -%}
 
 <div data-filterable="{{ section.filterable }}" name="Archive" class="main-padding w-screen">
-	<div class="relative select-none">
+	<div class="relative select-none py-4">
 
 		{% if (section.filterable) %}
-			<button class="tag-button" data-tag="all" title="All">
-				<h3>all,</h3>
-			</button>
+			<button class="tag-button text-xl font-medium" data-tag="all" title="All">
+				all
+			</button><span class="text-xl font-medium">,&nbsp&nbsp</span>
 
 			{% for tag in filterTags %}
-				<button class="tag-button p-4" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
-					<h3>{{ tag.title }}{% if not loop.last %},{% endif %}</h3>
-				</button>
+				<button class="tag-button text-xl font-medium" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
+					{{ tag.title }}
+				</button><span class="text-xl font-medium">{% if not loop.last %},{% endif %}&nbsp&nbsp</span>
 			{% endfor %}
 		{% endif %}
 

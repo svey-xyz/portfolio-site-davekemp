@@ -7,7 +7,10 @@
 		@apply text-3xl font-medium;
 	}
 	h2 {
-		@apply text-2xl font-semibold;
+		@apply text-2xl font-medium;
+	}
+	h3 {
+		@apply text-xl font-medium;
 	}
 	h5 {
 		@apply text-left font-bold font-body text-primary-text text-xl;

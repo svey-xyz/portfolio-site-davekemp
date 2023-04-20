@@ -6,8 +6,7 @@ module.exports = async () => {
 		"work":*[_type == "project"]{
 			...,
 			"slug":slug.current,
-			projectTags[]->,
-			client->,
+			"projectTags":tags[]->,
 		} | order(date desc),
 		"tags":*[_type == "projectTag"]{...}
 	}`

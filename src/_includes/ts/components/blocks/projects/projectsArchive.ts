@@ -39,9 +39,10 @@ function initElements() : void {
 
 function tagClick(e : Event) : void {
 	const target = e.target as HTMLElement
-	const tag = target.getAttribute('data-tag')!;
+	const tag = target.hasAttribute('data-tag') ? 
+		target.getAttribute('data-tag') : target.parentElement!.getAttribute('data-tag');
 	
-	tagSelect(tag)
+	tagSelect(tag ? tag : '')
 }
 
 function tagSelect(tag : string) : void {

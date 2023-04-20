@@ -8,35 +8,6 @@
 	@apply text-failure-accent;
 }
 
-button {
-	&.std-round {
-		@apply relative rounded-full tracking-wider font-bold cursor-pointer px-2 py-1 m-2 text-primary-bg bg-opposite-bg border-2 border-transparent;
-
-		&:hover {
-			@apply text-primary-text bg-primary-bg border-2 border-opposite-bg;
-		}
-
-		&.active {
-			@apply text-primary-text bg-primary-bg;
-			
-			&:hover {
-				@apply border-transparent;
-			}
-
-			&::after {
-				@apply absolute inset-0;
-				content: '';
-				z-index: -1;
-				margin: -4px;
-				border-radius: inherit;
-				background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
-				opacity: 1;
-
-			}
-		}
-	}
-}
-
 .plyr {
 	@apply absolute inset-0;
 }

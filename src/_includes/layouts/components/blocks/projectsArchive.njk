@@ -2,38 +2,32 @@
 	Projects Archive Block
 #}
 
-{% if section.allTags -%}
+{# {% if section.allTags -%}
 	{%- set filterTags = projects.tags -%}
 {%- else -%}
 	{%- set filterTags = section.tags -%}
-{%- endif %}
+{%- endif %} #}
 
-{% set archiveTitle -%}
-	{%- if (section.title) -%}
-		{{ section.title }}
-	{%- else -%}
-		archive
-	{%- endif -%}
-{%- endset %}
+{%- set filterTags = projects.tags -%}
 
-<div data-filterable="{{ section.filterTags }}" name="{{ archiveTitle }}" class="main-padding block-padding flex-wrap justify-center w-full">
-	<div class="z-10 relative flex flex-wrap justify-center select-none">
+<div data-filterable="{{ section.filterable }}" name="Archive" class="main-padding w-screen">
+	<div class="relative select-none">
 
-		{% if (section.filterTags) %}
-			<button class="tag-button std-round" data-tag="all" title="All">
-				All
+		{% if (section.filterable) %}
+			<button class="tag-button" data-tag="all" title="All">
+				<h3>all,</h3>
 			</button>
 
 			{% for tag in filterTags %}
-				<button class="tag-button std-round" data-tag="{{ tag.title | slug }}" title="Sort for- {{ tag.title }}">
-					{{ tag.title }}
+				<button class="tag-button p-4" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
+					<h3>{{ tag.title }}{% if not loop.last %},{% endif %}</h3>
 				</button>
 			{% endfor %}
 		{% endif %}
 
 	</div>
 
-	<div class="flex flex-wrap justify-center sm:-mx-6">
+	<div class="flex flex-wrap">
 		{# 11ty only returns strings from shortcodes, so the data is added to the page data, hopefully this changes in the future #}
 		{% set activeProjects %}{% getMatchingProjects projects.work, filterTags, pageData %}{% endset %}
 

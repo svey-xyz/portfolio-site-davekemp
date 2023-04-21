@@ -13,7 +13,7 @@
 		</a>
 		<div class="relative w-full z-10 border-t-2 border-primary-border">
 			<div class="relative block mt-4">
-				<h3>{{ project.title }}</h3>
+				<a href="/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}"><h3>{{ project.title }}</h3></a>
 			</div>
 			<div class="relative block w-auto max-w-full">
 				<span class="text-md font-semibold text-primary-accent">{% dateConverter project.date, 1 %} | 

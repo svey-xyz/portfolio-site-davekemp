@@ -71,7 +71,7 @@
 		/* @apply block p-2 w-full border-2 border-primary-border bg-secondary-bg text-primary-text rounded-md focus:border-primary-accent focus:outline-none focus:shadow-lg focus:shadow-primary-accent; */
 
 html {
-  background-color: var(--secondaryBackground);
+  background-color: var(--primaryBackground);
   &.dark {
 	  & .svg-theme-colour {
 		  @apply filter invert;

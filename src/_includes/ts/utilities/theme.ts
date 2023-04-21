@@ -15,7 +15,7 @@ export class theme {
 	constructor() {
 		this.mobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
 
-		this.themeSwitchers = <NodeListOf<HTMLInputElement>>document.querySelectorAll('#themeSwitcher');
+		this.themeSwitchers = <NodeListOf<HTMLInputElement>>document.querySelectorAll('[input="themeSwitcher"]');
 		this.themeSwitchers.forEach(themeSwitch => {
 			themeSwitch.addEventListener("click", () => {
 				let theme = themeSwitch.checked ? 'light' : 'dark';

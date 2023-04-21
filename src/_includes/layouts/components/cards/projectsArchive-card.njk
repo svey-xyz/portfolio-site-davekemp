@@ -10,8 +10,9 @@ class="group relative flex h-auto w-1/3" data-tags='[{{ cardTags }}]'>
 
 	<div class="block relative w-full h-auto">
 		{% image project.thumbnail, "lazy relative m-0 w-full h-auto min-w-full object-center object-cover", project.title %}
-		<div class="relative w-full self-end py-6 z-10 border-t-2 border-primary-border">
-			<span class="block text-2xl font-extrabold text-primary-text">{{ project.title }}</span>
+		<div class="relative w-full z-10 border-t-2 border-primary-border">
+			<span class="mt-2 block text-2xl font-extrabold text-primary-text">{{ project.title }}</span>
+			<span class="inline-block text-lg font-semibold text-primary-accent">{% dateConverter project.date, 1, "WIP" %}</span>
 		</div>
 	</div>
 	

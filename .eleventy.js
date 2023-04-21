@@ -10,6 +10,8 @@ const matchingPorjects = require("./lib/shortcodes/matchingProjects")
 const themeCalculations = require("./lib/utils/themeCalculations")
 
 const responsiveImage = require("./lib/shortcodes/images/responsiveImage")
+const dateConverter = require("./lib/shortcodes/dateConverter")
+
 
 
 const bundlePointer = require("./lib/shortcodes/bundlePointer")
@@ -45,6 +47,8 @@ module.exports = (eleventyConfig) => {
 
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", responsiveImage);
+	eleventyConfig.addNunjucksShortcode("dateConverter", dateConverter);
+
 
 	eleventyConfig.addNunjucksAsyncShortcode("videoEmbed", videoEmbed);
 	eleventyConfig.addShortcode("videoID", videoID);

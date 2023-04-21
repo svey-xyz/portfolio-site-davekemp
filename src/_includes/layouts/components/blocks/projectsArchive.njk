@@ -2,13 +2,11 @@
 	Projects Archive Block
 #}
 
-{# {% if section.allTags -%}
-	{%- set filterTags = projects.tags -%}
-{%- else -%}
-	{%- set filterTags = section.tags -%}
-{%- endif %} #}
-
-{%- set filterTags = projects.tags -%}
+{% if section.tags|length == 0 %}
+	{% set filterTags = projects.tags %}
+{% else %}
+	{% set filterTags = section.tags %}
+{% endif %}
 
 <div data-filterable="{{ section.filterable }}" name="Archive" class="main-padding w-screen">
 	<div class="relative select-none py-4">

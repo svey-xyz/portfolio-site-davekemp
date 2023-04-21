@@ -8,7 +8,7 @@
 	{% set filterTags = section.tags %}
 {% endif %}
 
-<div data-filterable="{{ section.filterable }}" name="Archive" class="main-padding w-screen">
+<div data-filterable="{{ section.filterable }}" name="archive" class="main-padding w-screen">
 	<div class="relative select-none py-4">
 
 		{% if (section.filterable) %}
@@ -25,7 +25,7 @@
 
 	</div>
 
-	<div class="flex flex-wrap">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4">
 		{# 11ty only returns strings from shortcodes, so the data is added to the page data, hopefully this changes in the future #}
 		{% set activeProjects %}{% getMatchingProjects projects.work, filterTags, pageData %}{% endset %}
 

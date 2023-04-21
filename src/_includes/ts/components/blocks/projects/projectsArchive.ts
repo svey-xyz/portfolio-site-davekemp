@@ -17,7 +17,7 @@ export const mount = (container: Element) => {
 function initializeArchive(): void {
 	initElements();
 
-	archiveName = archiveContainer.getAttribute('name')!;
+	archiveName = archiveContainer.getAttribute('name')!.toLowerCase();
 
 	const filterTag = new URL(window.location.href).searchParams.get(archiveName)
 	filterTag ? tagSelect(filterTag) : tagSelect('all')

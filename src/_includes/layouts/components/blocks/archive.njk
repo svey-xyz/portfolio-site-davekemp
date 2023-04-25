@@ -1,0 +1,24 @@
+{#
+	Block for all archives
+
+#}
+
+<div data-filterable="{{ section.filterable }}" name="{{section.title}}" class="main-padding w-full">
+	<div class="relative select-none py-4">
+
+		{% if (section.filterable) %}
+			<button class="tag-button text-xl font-medium text-primary-text" data-tag="all" title="All">
+				all
+			</button><span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>
+
+			{% for tag in section.tags %}
+				<button class="tag-button text-xl font-medium text-primary-text" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
+					{{ tag.title | slug }}
+				</button><span class="text-xl font-medium text-primary-text">{% if not loop.last %},{% endif %}&nbsp&nbsp</span>
+			{% endfor %}
+		{% endif %}
+
+	</div>
+
+	{% include ("layouts/components/blocks/archives/" + section.archiveType + ".njk") %}
+</div>

@@ -1,5 +1,5 @@
 {% set dataTags -%}
-	{%- for tag in project.projectTags -%}
+	{%- for tag in project.tags -%}
 		"{{ tag.title | slug }}"
 		{%- if not loop.last -%},{%- endif -%}
 	{%- endfor -%}
@@ -21,7 +21,7 @@
 			</div>
 			<div class="relative block w-auto max-w-full">
 				<span class="text-md font-semibold text-primary-accent">{% dateConverter project.date, 0 %} | 
-					{% for tag in project.projectTags %}
+					{% for tag in project.tags %}
 						<span class="text-primary-accent font-light">
 						<a aria-label="Link to the archive page with this tag selected." class="hover:underline" href="/?archive={{ tag.title | slug }}"> {{ tag.title }}</a>
 						{% if not loop.last %}

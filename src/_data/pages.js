@@ -6,14 +6,16 @@ module.exports = async () => {
 	const blocksPageQuery = groq`{
 			...,
 			blocks[]{
-				_type,
 				...,
-				_type == "projectsArchive" => {
-					"tags":tags[]->{...},
-				},
-				_type == "itemCard" => {
-                	"linkID":link->_id
-              	}
+				_type == "archive" => {
+					"tags":select(
+                      	defined(tags) => tags[]->{...},
+                      	select(
+                        	archiveType == "textsArchive" => *[_type == "textTag"] | order(priority desc),
+                        	archiveType == "projectsArchive" => *[_type == "projectTag"] | order(priority desc)
+                      	)
+                    ),
+				}
           	}
 		}`
 

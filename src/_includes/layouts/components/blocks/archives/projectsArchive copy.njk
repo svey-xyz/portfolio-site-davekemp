@@ -27,7 +27,7 @@
 
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4">
 		{# 11ty only returns strings from shortcodes, so the data is added to the page data, hopefully this changes in the future #}
-		{% set activeProjects %}{% getMatchingProjects projects.work, filterTags, pageData %}{% endset %}
+		{% set activeProjects %}{% matchingArchiveItems projects.work, filterTags, pageData %}{% endset %}
 
 		{% asyncEach project in pageData.activeProjects %}
 			{% include "../cards/projectsArchive-card.njk" %}

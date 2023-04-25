@@ -6,7 +6,7 @@ const blocksToMD = require("./lib/shortcodes/portableTextToHTML")
 const betterSlugs = require("./lib/filters/betterSlugs")
 const videoEmbed = require("./lib/shortcodes/videoEmbed")
 const videoID = require("./lib/shortcodes/videoID")
-const matchingPorjects = require("./lib/shortcodes/matchingProjects")
+const matchingArchiveItems = require("./lib/shortcodes/matchingArchiveItems")
 const themeCalculations = require("./lib/utils/themeCalculations")
 
 const responsiveImage = require("./lib/shortcodes/images/responsiveImage")
@@ -43,7 +43,7 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addFilter("emailSplitter", emailSplitter);
 
 	eleventyConfig.addShortcode("themeCalculations", themeCalculations);
-	eleventyConfig.addShortcode("getMatchingProjects", matchingPorjects);
+	eleventyConfig.addShortcode("matchingArchiveItems", matchingArchiveItems);
 
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", responsiveImage);

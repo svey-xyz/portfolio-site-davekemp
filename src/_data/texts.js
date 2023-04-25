@@ -3,12 +3,11 @@ const groq = require('groq')
 
 module.exports = async () => {
 	const query = groq`{
-		"work":*[_type == "project"]{
+		"texts":*[_type == "textDocument"]{
 			...,
-			"slug":slug.current,
 			"tags":tags[]->,
 		} | order(date desc),
-		"tags":*[_type == "projectTag"] | order(priority desc)
+		"tags":*[_type == "textTag"] | order(priority desc)
 	}`
 
 	// const order = `| order(publishedAt asc)`
@@ -16,6 +15,6 @@ module.exports = async () => {
 	const data = await sanityFetch('projects', query)
 
 	// const preparePosts = data.map(generateContent);
-	
+
 	return data;
 }

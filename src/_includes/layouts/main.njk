@@ -28,22 +28,22 @@ permalink: false
 {% endset %}
 
 {% set pageTitle %}
-	{% if pageData.descriptiveTitle %}
-		{{ pageData.descriptiveTitle }}
+	{% if pageData.title %}
+		{{ site.siteSettings.title }} | {{ pageData.title }}
 	{% elif project.title %}
 		{{ site.siteSettings.title }} | {{ project.title }}
 	{% else %}
+		{{ site.siteSettings.title }}
 	{% endif %}
 
 {% endset %}
 
 <html lang="en" class="">
-	<title>{{ site.siteSettings.description }}</title>
 	<head>
+		<title>{{ pageTitle }}</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>{{ pageTitle }}</title>
 		<meta name="description" content="{{ pageDescriptor }}">
 
 		<script>
@@ -55,7 +55,7 @@ permalink: false
 		{% bundlePointer "CSS" %}
 	</head>
 	<body class="relative min-h-full w-full top-0">
-		<main id="pageContent" class="relative min-h-full w-full flex flex-col top-0">
+		<main id="pageContent" class="relative min-h-full w-full flex flex-col top-0" pageID="{{ pageData.slug }}">
 			{% include './components/headers/header.njk' %}
 			{{ content | safe }}
 			{% include './components/footers/footer.njk' %}

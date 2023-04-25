@@ -17,19 +17,6 @@ module.exports = async () => {
           	}
 		}`
 
-	const homePageQuery = groq`{
-			blocks[]{
-				_type,
-				...,
-				_type == "projectsArchive" => {
-					"tags":tags[]->{...},
-				},
-				_type == "itemCard" => {
-                	"linkID":link->_id
-              	}
-          	}
-		}`
-
 	const filter = groq`*[_type == "page"]`
 	const projection = groq`{
 			_id,
@@ -45,7 +32,6 @@ module.exports = async () => {
 			"template":pageType,
 			"content":select(
 				pageType == "blocksPage" => blocksPage${blocksPageQuery},
-				pageType == "homePage" => homePage${homePageQuery}
 			)
 		}`
 

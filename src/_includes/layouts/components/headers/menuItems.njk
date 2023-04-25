@@ -12,7 +12,7 @@
 		{% if loop.last == false %}
 			pr-16
 		{% endif %}">
-		<h6 class="relative z-10"><a href="/{{ navLink | slug }}" class="relative z-10 transition-colors duration-200
+		<h6 class="relative z-10"><a href="/{{ navLink | slug }}" navID="{{ navLink | slug }}" class="nav-item relative z-10 transition-colors duration-200
 			text-primary-text hover:text-medium-accent">
 			{{ navItem.title }}
 		</a></h6>

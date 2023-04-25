@@ -1,13 +1,17 @@
 let header:HTMLElement;
 let menuSwitch:HTMLInputElement;
+let pageID:string;
 
 export const mount = (container: HTMLElement) => {
 	header = container;
 	menuSwitch = header.querySelector('#menuSwitch')!;
 
+	pageID = document.querySelector('main')!.getAttribute('pageID')!;
+
 	menuSwitch.addEventListener("click", switchMenu);
 	switchMenu(null);
 	switchLayout();
+	activeNav();
 
 	document.addEventListener("keydown", function (event) {
 		const key = event.key; // Or const {key} = event; in ES6+
@@ -17,6 +21,12 @@ export const mount = (container: HTMLElement) => {
 	});
 
 	window.addEventListener("resize", utils.domUtils.debounce(switchLayout));
+}
+
+function activeNav() {
+	header.querySelectorAll('.nav-item')!.forEach(navItem => {
+		if (navItem.getAttribute('navID') == pageID) navItem.classList.add('active-page');
+	});
 }
 
 function switchLayout() {

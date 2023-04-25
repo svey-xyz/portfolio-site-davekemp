@@ -17,3 +17,9 @@
 		@apply !text-primary-accent;
 	}
 }
+
+.nav-item {
+	&.active-page {
+		@apply !text-primary-accent;
+	}
+}

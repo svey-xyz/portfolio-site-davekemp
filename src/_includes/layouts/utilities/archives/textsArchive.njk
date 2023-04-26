@@ -2,7 +2,8 @@
 	Projects Archive Block
 #}
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4">
-	{# 11ty only returns strings from shortcodes, so the data is added to the page data, hopefully this changes in the future #}
-
+<div class="flex max-w-prose-full">
+	{% asyncEach text in pageData.content.items %}
+		{% include "layouts/components/cards/textsArchive-card.njk" %}
+	{% endeach %}
 </div>

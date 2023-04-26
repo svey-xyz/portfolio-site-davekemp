@@ -56,9 +56,9 @@ permalink: false
 	</head>
 	<body class="relative min-h-full w-full top-0">
 		<main id="pageContent" class="relative min-h-full w-full flex flex-col top-0" pageID="{{ pageData.slug }}">
-			{% include './components/headers/header.njk' %}
+			{% include 'layouts/components/headers/header.njk' %}
 			{{ content | safe }}
-			{% include './components/footers/footer.njk' %}
+			{% include 'layouts/components/footers/footer.njk' %}
 		</main>
 	</body>
 	<footer>

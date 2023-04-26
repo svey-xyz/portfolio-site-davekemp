@@ -1,13 +1,7 @@
----
-title: {{ project.title }}
-layout: layouts/main.njk
-page_scripts: []
----
-
-{% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
+{# {% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.projects | getNextCollectionItem(page) %}
 
-{# <div class="main-padding padding-top flex-wrap justify-center">
+<div class="main-padding padding-top flex-wrap justify-center">
   	<div class="m-auto max-w-screen-lg relative">
 
 		<h1 class="text-3xl font-bold mb-7">{{ project.title }}</h1>

@@ -24,7 +24,7 @@
 			
 			{{ activeProjects | debugger }}
 			{% asyncEach project in pageData.activeProjects %}
-				{% include "../cards/projectsShowcase-card.njk" %}
+				{% include "layouts/components/cards/projectsShowcase-card.njk" %}
 			{% endeach %}
 		</div>
 	</div>

@@ -30,7 +30,7 @@
 		{% set activeProjects %}{% matchingArchiveItems projects.work, filterTags, pageData %}{% endset %}
 
 		{% asyncEach project in pageData.activeProjects %}
-			{% include "../cards/projectsArchive-card.njk" %}
+			{% include "layouts/components/cards/projectsArchive-card.njk" %}
 		{% endeach %}
 	</div>
 </div>

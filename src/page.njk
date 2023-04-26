@@ -14,5 +14,5 @@ permalink: "{{ pageData.slug | slug }}/index.html"
 #}
 
 <article id="{{ pageData.title | slug }}">
-	{% extends "./_includes/layouts/templates/" + pageData.template + ".njk" %}
+	{% extends "layouts/templates/" + pageData.template + ".njk" %}
 </article>

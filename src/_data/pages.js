@@ -7,7 +7,7 @@ module.exports = async () => {
 			...,
 			"slug":slug.current,
 			"tags":tags[]->,
-		}`
+		} | order(date desc)`
 	const blocksPageQuery = groq`{
 			...,
 			blocks[]{

@@ -27,7 +27,7 @@ function initializeArchive(): void {
 
 function initElements() : void {
 	const buttonElements = archiveContainer.querySelectorAll('.tag-button');
-	const htmlCards = archiveContainer.querySelectorAll('#projectsArchive-card');
+	const htmlCards = archiveContainer.querySelectorAll('.archive-card');
 
 	for (let b of buttonElements) {
 		tagButtons.push(<HTMLElement>b);

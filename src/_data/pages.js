@@ -7,15 +7,23 @@ module.exports = async () => {
 			...,
 			blocks[]{
 				...,
-				_type == "archive" => {
-					"tags":select(
-                      	defined(tags) => tags[]->{...},
-                      	select(
-                        	archiveType == "textsArchive" => *[_type == "textTag"] | order(priority desc),
-                        	archiveType == "projectsArchive" => *[_type == "projectTag"] | order(priority desc)
-                      	)
-                    ),
-				}
+				(_type == "archive") => {
+                  	"title":title.current,
+					
+                  	(archiveType == "projectsArchive") => {
+						"tags":select(
+                      		count(projectsArchive.tags) > 0 => projectsArchive.tags[]->,
+                      		*[_type == "projectTag"]
+                    	) | order(priority desc),
+                  	},
+				
+                	(archiveType == "textsArchive") => {
+                  		"tags":select(
+                      		count(textsArchive.tags) > 0 => textsArchive.tags[]->,
+                      		*[_type == "textTag"]
+                  		) | order(priority desc),
+					}
+              	},
           	}
 		}`
 

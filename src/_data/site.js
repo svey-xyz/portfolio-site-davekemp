@@ -23,10 +23,10 @@ module.exports = async () => {
 		}[0],
 		"navigation":*[_id == "navigation"] {
 			primaryNavigation[] {
-				"slug":page->slug.current,
+				"slug":reference->slug.current,
 				"title":select(
 					defined(title) => title,
-					page->title
+					reference->title
 				)
 			},
 			"archivePageSlug":projectsPage->slug.current,

@@ -7,6 +7,22 @@ module.exports = async () => {
 			...,
 			"slug":slug.current,
 			"tags":tags[]->,
+			links[]{
+              	(_type == "externalLink") => {
+                	"url":url,
+                	"linkText":select(
+                  		defined(linkText) => linkText,
+                  		url
+                	)
+              	},
+              	(_type == "internalLink") => {
+                	"url":reference->slug.fullUrl,
+                	"linkText":select(
+                  		defined(linkText) => linkText,
+                  		reference->title
+                	)
+              	},
+            }
 		} | order(date desc),
 		"tags":*[_type == "projectTag"] | order(priority desc)
 	}`

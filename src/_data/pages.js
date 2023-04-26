@@ -3,18 +3,31 @@ const groq = require('groq')
 const slugify = require('slugify')
 
 module.exports = async () => {
+	const archiveItemQuery = groq`{
+			...,
+			"slug":slug.current,
+			"tags":tags[]->,
+		}`
 	const blocksPageQuery = groq`{
 			...,
 			blocks[]{
 				...,
 				(_type == "archive") => {
                   	"title":title.current,
-					
+
                   	(archiveType == "projectsArchive") => {
 						"tags":select(
                       		count(projectsArchive.tags) > 0 => projectsArchive.tags[]->,
                       		*[_type == "projectTag"]
                     	) | order(priority desc),
+						"items": *[_type == "project" &&
+                            count((tags[]._ref)[@ in 
+								select(
+                      				count(^.^.projectsArchive.tags) > 0 => ^.^.projectsArchive.tags[]._ref,
+                      				*[_type == "projectTag"]._id
+                   				)
+                      		]) > 0
+                        ]${archiveItemQuery}
                   	},
 				
                 	(archiveType == "textsArchive") => {
@@ -22,6 +35,14 @@ module.exports = async () => {
                       		count(textsArchive.tags) > 0 => textsArchive.tags[]->,
                       		*[_type == "textTag"]
                   		) | order(priority desc),
+						"items": *[_type == "textDocument" &&
+                            count((tags[]._ref)[@ in 
+								select(
+                      				count(^.^.textsArchive.tags) > 0 => ^.^.textsArchive.tags[]._ref,
+                      				*[_type == "textTag"]._id
+                   				)
+                      		]) > 0
+                        ]${archiveItemQuery}
 					}
               	},
           	}

@@ -5,31 +5,27 @@
 	{%- endfor -%}
 {%- endset %}
 
+{% set projectLink %}
+/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}
+{% endset %}
+
 <div id="projectsArchive-card" class="group relative flex h-auto" data-tags='[{{ dataTags }}]'>
 
 	<div class="block relative w-full h-auto">
-		<a aria-label="Link to the project page for- {{ project.title }}" href="/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}">
+		<a aria-label="Link to the project page for- {{ project.title }}" href="{{ projectLink }}">
 			{% set imageAlt %}Thumbnail image for- {{ project.title }}{% endset %}
 			{% image project.thumbnail, "relative m-0 w-full h-auto min-w-full object-center object-cover", imageAlt %}
 		</a>
 		<div class="relative w-full z-10 border-t-2 border-primary-border">
 			<div class="relative block mt-4">
-				<a aria-label="Link to the project page for- {{ project.title }}" href="/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}"
+				<a aria-label="Link to the project page for- {{ project.title }}" href="{{ projectLink }}"
 					class="text-2xl font-extrabold text-primary-text">
 					{{ project.title }}
 				</a>
 			</div>
 			<div class="relative block w-auto max-w-full">
-				<span class="text-md font-semibold text-primary-accent">{% dateConverter project.date, 0 %} | 
-					{% for tag in project.tags %}
-						<span class="text-primary-accent font-light">
-						<a aria-label="Link to the archive page with this tag selected." class="hover:underline" href="/?archive={{ tag.title | slug }}"> {{ tag.title }}</a>
-						{% if not loop.last %}
-							,
-						{% endif %}
-						</span>
-					{% endfor %}
-				</span>
+				{% from "layouts/utilities/projectDateTags.njk" import projectDateTags %}
+				{{ projectDateTags(project=project) }}
 			</div>
 			<div class="relative hidden lg:block mt-3">
 				<span class="font-light line-clamp-2 text-primary-text">{{ project.description }}</span>

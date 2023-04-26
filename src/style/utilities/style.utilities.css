@@ -14,12 +14,12 @@
 
 .tag-button {
 	&.active {
-		@apply !text-primary-accent;
+		@apply !text-medium-accent;
 	}
 }
 
 .nav-item {
 	&.active-page {
-		@apply !text-primary-accent;
+		@apply !text-medium-accent;
 	}
 }

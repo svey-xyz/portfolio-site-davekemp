@@ -1,5 +1,13 @@
-<div class="text-type-container relative w-full">
+{# <div class="text-type-container relative w-full">
 	<div class="text-container main-padding mx-auto w-full pt-12 pb-2">
 		<h1>{{ pageData.title }}</h1>
 	</div>
-</div>
+</div> #}
+
+{% macro title(titleText) %}
+	<div class="text-type-container relative w-full">
+		<div class="text-container main-padding mx-auto w-full pt-12 pb-2">
+			<h1>{{ titleText }}</h1>
+		</div>
+	</div>
+{% endmacro %}

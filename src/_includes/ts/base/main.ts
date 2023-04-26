@@ -59,7 +59,7 @@ function loadScripts() {
 				},
 				...interactiveScripts,
 				{
-					selector: '.archive > [data-filterable="true"]', // don't bother loading script if not filterable
+					selector: '.archive[data-filterable="true"]', // don't bother loading script if not filterable
 					scriptPath: 'blocks/archive/archive'
 				},	
 				{

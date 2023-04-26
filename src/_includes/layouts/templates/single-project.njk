@@ -1,49 +1,39 @@
-{# {% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
+{% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.projects | getNextCollectionItem(page) %}
 
-<div class="main-padding padding-top flex-wrap justify-center">
-  	<div class="m-auto max-w-screen-lg relative">
+{% from "layouts/components/titles/standard.njk" import title %}
+{{ title(titleText=project.title) }}
 
-		<h1 class="text-3xl font-bold mb-7">{{ project.title }}</h1>
+<div id="singleProject" class="main-padding padding-top w-screen relative">
 
-		<div id="{{ project.title | slug}}-content" class="grid gap-y-6 mb-24">
-			<div id="{{ project.title | slug}}-description" class="max-w-prose inline-block">
-				{{ project.description | markdownify | safe }}
-			</div>
+	{% from "layouts/utilities/projectDateTags.njk" import projectDateTags %}
+	{{ projectDateTags(project=project) }}
 
-			<p>
-				<span class="font-bold mb-3">Tags:</span>&nbsp;
-				
-				{% for tag in project.tags %}
-					<a href="/work/#{{ tag | slug}}" class="hover:underline">{{ tag }}</a>
-					{% if not loop.last %}
-					,&nbsp;
-					{% endif %}
-				{% endfor %}
-			</p>
-
-			markdownify needed for embeds which aren't returned as stragiht markdown like the rest of the objects
-			{{ project.content | markdownify | safe }}
-
-			{% if project.links | length > 0 %}
-				<h3 class="text-2xl font-bold">Links: </h3>
-				{% for link in project.links %}
-					<a href="{{ link.url }}" target="_blank" class="hover:underline">{{ link.title }}</a>
-				{% endfor %}
-			{% endif %}
-
-			
+	<div id="{{ project.title | slug }}-content" class="grid gap-y-6 mb-24 pt-6">
+		<div id="{{ project.title | slug }}-description" class="max-w-prose inline-block">
+			{{ project.description | markdownify | safe }}
 		</div>
 
+		{# markdownify needed for embeds which aren't returned as stragiht markdown like the rest of the objects #}
+		{# {{ project.content | markdownify | safe }} #}
+
+		{% if project.links | length > 0 %}
+			<h3 class="text-2xl font-bold">Links: </h3>
+			{% for link in project.links %}
+				<a href="{{ link.url }}" target="_blank" class="hover:underline">{{ link.title }}</a>
+			{% endfor %}
+		{% endif %}
+
+
 		{% if previousPost %}
-				<p class="absolute left-0 inline">← <a href="{{ previousPost.url }}" class="hover:underline">
-					{{ previousPost.data.project.title }}
-				</a></p>	
+			<p class="absolute left-0 inline">← <a href="{{ previousPost.url }}" class="hover:underline">
+				{{ previousPost.data.project.title }}
+			</a></p>	
 		{% endif %} 
 		{% if nextPost %}
-				<p class="absolute right-0 inline"><a href="{{ nextPost.url }}" class="hover:underline">
-					{{ nextPost.data.project.title }}
-				</a> →</p>	
+			<p class="absolute right-0 inline"><a href="{{ nextPost.url }}" class="hover:underline">
+				{{ nextPost.data.project.title }}
+			</a> →</p>	
 		{% endif %} 
 	</div>
-</div> #}
+</div>

@@ -5,7 +5,7 @@
 let projectCards = Array<projectCard>();
 let tagButtons = Array<HTMLElement>();
 let archiveContainer:HTMLElement;
-let archiveName:string;
+let filterParam: string = 'archive';
 
 
 export const mount = (container: Element) => {
@@ -17,9 +17,11 @@ export const mount = (container: Element) => {
 function initializeArchive(): void {
 	initElements();
 
-	archiveName = archiveContainer.getAttribute('name')!.toLowerCase();
+	// filterParam = archiveContainer.getAttribute('name')!.toLowerCase();
 
-	const filterTag = new URL(window.location.href).searchParams.get(archiveName)
+	const url = new URL(window.location.href);
+
+	const filterTag = new URL(window.location.href).searchParams.get(filterParam)
 	filterTag ? tagSelect(filterTag) : tagSelect('all')
 }
 
@@ -58,7 +60,7 @@ function tagSelect(tag : string) : void {
 function archiveSort(tag : string) {
 	let all = tag === 'all';
 
-	window.history.replaceState('', '', utils.domUtils.updateURLParameter(window.location.href, archiveName, tag));
+	window.history.replaceState('', '', utils.domUtils.updateURLParameter(window.location.href, filterParam, tag));
 
 	for (let card of projectCards) {
 		if (card.tags.includes(tag) || all) {

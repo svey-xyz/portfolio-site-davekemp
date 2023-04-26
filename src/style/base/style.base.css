@@ -57,7 +57,7 @@
 	}
 
 	.accent-highlight {
-		@apply absolute inset-0 overflow-hidden -z-1 rounded-sm mt-1 ml-1 min-h-full w-full bg-secondary-accent transition-all duration-200 group-hover:left-1 group-hover:ml-1/8 group-hover:bg-primary-accent;
+		@apply absolute inset-0 overflow-hidden -z-1 rounded-sm mt-1 ml-1 min-h-full w-full bg-secondary-accent transition-all duration-200 group-hover:left-1 group-hover:ml-1/8 group-hover:bg-medium-accent;
 	}
 
 	.svg-theme-colour {
@@ -68,7 +68,7 @@
 		clip-path: 
 	}
 }
-		/* @apply block p-2 w-full border-2 border-primary-border bg-secondary-bg text-primary-text rounded-md focus:border-primary-accent focus:outline-none focus:shadow-lg focus:shadow-primary-accent; */
+		/* @apply block p-2 w-full border-2 border-primary-border bg-secondary-bg text-primary-text rounded-md focus:border-medium-accent focus:outline-none focus:shadow-lg focus:shadow-medium-accent; */
 
 html {
   background-color: var(--primaryBackground);

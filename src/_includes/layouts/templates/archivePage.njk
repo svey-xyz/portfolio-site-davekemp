@@ -1,17 +1,17 @@
-{#
-	Block for all archives
+{% if pageData.content.titleSection %}
+	{% from "layouts/components/titles/standard.njk" import title %}
+	{{ title(titleText=pageData.title) }}
+{% endif %}
 
-#}
-
-<div data-filterable="{{ section.filterable }}" name="{{section.title}}" class="main-padding w-full">
+<div id="{{pageData.title|slug}}-archive" data-filterable="{{ pageData.content.filterable }}" name="{{pageData.title|slug}}" class="archive main-padding w-full">
 	<div class="relative select-none py-4">
 
-		{% if (section.filterable) %}
+		{% if (pageData.content.filterable) %}
 			<button class="tag-button text-xl font-medium text-primary-text" data-tag="all" title="All">
 				all
 			</button><span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>
 
-			{% for tag in section.tags %}
+			{% for tag in pageData.content.tags %}
 				<button class="tag-button text-xl font-medium text-primary-text" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
 					{{ tag.title | slug }}
 				</button><span class="text-xl font-medium text-primary-text">{% if not loop.last %},{% endif %}&nbsp&nbsp</span>
@@ -20,5 +20,5 @@
 
 	</div>
 
-	{% include ('layouts/components/blocks/archives/' + section.archiveType + '.njk') %}
+	{% include ('layouts/utilities/archives/' + pageData.content.archiveType + '.njk') %}
 </div>

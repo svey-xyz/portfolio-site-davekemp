@@ -1,0 +1,15 @@
+{% macro dateTags(item) %}
+	<span class="text-md font-medium text-medium-accent">{% dateConverter item.date, 0 %}
+		{% if item.tags | length > 0 %} | 
+			{% for tag in item.tags %}
+				<span class="text-medium-accent font-light">
+				<a aria-label="Link to the archive page with this tag selected." class="project-tag hover:underline" data-tag="{{ tag.title | slug }}"
+					href="{{ site.navigation.projectsPrimaryArchiveSlug }}/?archive={{ tag.title | slug }}"> {{ tag.title }}</a>
+				{% if not loop.last %}
+					,
+				{% endif %}
+				</span>
+			{% endfor %}
+		{% endif%}
+	</span>
+{% endmacro %}

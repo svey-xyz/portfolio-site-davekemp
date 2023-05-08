@@ -6,29 +6,30 @@
 {%- endset %}
 
 {% set textLink %}
-/{{ site.navigation.archivePageSlug | slug }}/{{ text.slug | slug }}
+/{{ site.navigation.textsPrimaryArchiveSlug | slug }}/{{ text.slug | slug }}
 {% endset %}
 
 <div class="archive-card group relative flex h-auto w-full max-w-prose-full" data-tags='[{{ dataTags }}]'>
-
 	<div class="block relative w-full h-auto">
 		<div class="relative w-full z-10 border-2 border-primary-border p-4 shadow-inner-dark">
 			<div class="flex flex-row items-end w-full">
 				<a aria-label="Link to the text page for- {{ text.title }}" href="{{ textLink }}"
-					class="text-2xl font-extrabold text-primary-text leading-tight">
+					class="text-2xl font-extrabold text-primary-text leading-tight group-hover:text-medium-accent">
 					{{ text.title }}
 				</a>
 				<div class="relative hidden lg:block w-auto max-w-full px-4">
-					{% from "layouts/utilities/projectDateTags.njk" import projectDateTags %}
-					{{ projectDateTags(project=text) }}
+					{% from "layouts/utilities/dateTags.njk" import dateTags %}
+					{{ dateTags(item=text) }}
 				</div>
 				{% if text.textType == "externalText" %}
-					<i class="fa-solid text-2xl fa-up-right-from-square self-center justify-self-end ml-auto"></i>
+					<a aria-label="Link to the text page for- {{ text.title }}" href="{{ textLink }}" class="self-center justify-self-end ml-auto">
+						<i class="fa-solid text-2xl fa-up-right-from-square text-primary-text group-hover:text-medium-accent"></i>
+					</a>
 				{% endif %}
 			</div>
 			<div class="relative block lg:hidden w-auto max-w-full">
-				{% from "layouts/utilities/projectDateTags.njk" import projectDateTags %}
-				{{ projectDateTags(project=text) }}
+				{% from "layouts/utilities/dateTags.njk" import dateTags %}
+				{{ dateTags(item=text) }}
 			</div>
 			<div class="relative hidden lg:block mt-3 pr-32">
 				<span class="font-light line-clamp-2 text-primary-text">{{ text.description }}</span>

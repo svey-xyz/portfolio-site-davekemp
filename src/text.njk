@@ -1,0 +1,16 @@
+---
+pagination:
+  data: texts.texts
+  alias: text
+  size: 1
+  addAllPagesToCollections: true
+layout: layouts/main.njk
+tags: 
+	- texts
+permalink: "/{{ site.navigation.textsPrimaryArchiveSlug }}/{{ text.slug }}/index.html"
+---
+{% if text.textType == "internalText" %}
+	<article id="{{ text.title }}">
+		{% extends "layouts/templates/single-text.njk" %}
+	</article>
+{% endif %}

@@ -6,6 +6,7 @@ module.exports = async () => {
 		"texts":*[_type == "textDocument"]{
 			...,
 			"tags":tags[]->,
+			"slug":slug.current,
 		} | order(date desc),
 		"tags":*[_type == "textTag"] | order(priority desc)
 	}`

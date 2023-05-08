@@ -6,7 +6,7 @@
 {%- endset %}
 
 {% set projectLink %}
-/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}
+/{{ site.navigation.projectsPrimaryArchiveSlug | slug }}/{{ project.slug | slug }}
 {% endset %}
 
 <div class="archive-card masonry-item group relative flex h-auto" data-tags='[{{ dataTags }}]'>
@@ -19,13 +19,13 @@
 		<div class="relative w-full z-10 border-t-2 border-primary-border">
 			<div class="relative block mt-4">
 				<a aria-label="Link to the project page for- {{ project.title }}" href="{{ projectLink }}"
-					class="text-2xl font-extrabold text-primary-text">
+					class="text-2xl font-extrabold text-primary-text group-hover:text-medium-accent">
 					{{ project.title }}
 				</a>
 			</div>
 			<div class="relative block w-auto max-w-full">
-				{% from "layouts/utilities/projectDateTags.njk" import projectDateTags %}
-				{{ projectDateTags(project=project) }}
+				{% from "layouts/utilities/dateTags.njk" import dateTags %}
+				{{ dateTags(item=project) }}
 			</div>
 			<div class="relative hidden lg:block mt-3">
 				<span class="font-light line-clamp-2 text-primary-text">{{ project.description }}</span>

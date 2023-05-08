@@ -1,25 +1,22 @@
-{% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
-{% set nextPost = collections.projects | getNextCollectionItem(page) %}
+{% set previousPost = collections.texts | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.texts | getNextCollectionItem(page) %}
 
 {% from "layouts/components/titles/standard.njk" import title %}
-{{ title(titleText=project.title) }}
+{{ title(titleText=text.title) }}
 
-<div id="singleProject" class="main-padding padding-top w-screen relative h-full">
+<div id="singleText" class="main-padding padding-top w-screen relative h-full">
 
 	{% from "layouts/utilities/dateTags.njk" import dateTags %}
-	{{ dateTags(item=project) }}
+	{{ dateTags(item=text) }}
 
-	<div id="{{ project.title | slug }}-content" class="grid gap-y-6 mb-24 pt-6">
-		<div id="{{ project.title | slug }}-description" class="max-w-prose inline-block">
-			{{ project.description | markdownify | safe }}
+	<div id="{{ text.title | slug }}-content" class="grid gap-y-6 mb-24 pt-6">
+		<div class="max-w-prose-full inline-block">
+			{% portableTextToHTML text.internalText.text  %}
 		</div>
 
-		{# markdownify needed for embeds which aren't returned as stragiht markdown like the rest of the objects #}
-		{# {{ project.content | markdownify | safe }} #}
-
-		{% if project.links | length > 0 %}
+		{% if text.links | length > 0 %}
 			<span class="text-lg font-bold">Links: </span>
-			{% for link in project.links %}
+			{% for link in text.links %}
 				<a href="{{ link.url }}" target="_blank" class="underline font-light hover:text-medium-accent">{{ link.linkText }}</a>
 			{% endfor %}
 		{% endif %}
@@ -28,12 +25,12 @@
 	<div class="w-full py-8 flex flex-row">
 		{% if previousPost %}
 			<span class="">← <a aria-label="Link to the previous item in collection- {{ previousPost.title }}" href="{{ previousPost.url | slug}}" class="hover:underline">
-				{{ previousPost.data.project.title }}
+				{{ previousPost.data.text.title }}
 			</a></span>	
 		{% endif %} 
 		{% if nextPost %}
 			<span class="justify-self-end ml-auto"><a aria-label="Link to the next item in collection- {{ nextPost.title }}" href="{{ nextPost.url | slug}}" class="hover:underline">
-				{{ nextPost.data.project.title }}
+				{{ nextPost.data.text.title }}
 			</a> →</span>	
 		{% endif %}
 	</div>

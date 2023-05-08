@@ -23,19 +23,16 @@ module.exports = async () => {
         	)
       	},
 		(archiveType == "textsArchive") => {
-			"tags":select(
-				count(textsArchive.tags) > 0 => textsArchive.tags[]->,
-				*[_type == "textTag"]
-			) | order(priority desc),
-			"archiveItems": *[_type == "textDocument" &&
-				count((tags[]._ref)[@ in 
-					select(
-						count(^.^.textsArchive.tags) > 0 => ^.^.textsArchive.tags[]._ref,
-						*[_type == "textTag"]._id
-					)
-				]) > 0
-			]${archiveItemQuery}
-		}
+        	"tags":select(
+          		count(textsArchive.tags) > 0 => textsArchive.tags[]->,
+            	*[_type == "textTag"]
+          	) | order(priority desc),
+        	"archiveItems":select(
+          		(count(textsArchive.tags) > 0) =>
+            		*[_type == "textDocument" && count((tags[]._ref)[@ in ^.^.textsArchive.tags[]._ref]) > 0]${archiveItemQuery},
+          		*[_type == "textDocument"]${archiveItemQuery}
+        	)
+      	}
 	}`
 	const blocksPageQuery = groq`{
 			...,

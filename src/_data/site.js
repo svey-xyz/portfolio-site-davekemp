@@ -29,8 +29,10 @@ module.exports = async () => {
 					reference->title
 				)
 			},
-			"archivePageSlug":projectsPage->slug.current,
-			"homePageSlug":homePage->slug.current
+			"homePageSlug":homePage->slug.current,
+			"projectsPrimaryArchiveSlug":projectsPage->slug.current,
+			"textsPrimaryArchiveSlug":textsPage->slug.current,
+
 		}[0],
 		"theme":*[_id == "theme"] {
 			...,

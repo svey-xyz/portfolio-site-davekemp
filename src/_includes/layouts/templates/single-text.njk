@@ -11,7 +11,7 @@
 
 	<div id="{{ text.title | slug }}-content" class="grid gap-y-6 mb-24 pt-6">
 		<div class="max-w-prose-full inline-block">
-			{% portableTextToHTML text.internalText.text  %}
+			{% portableTextToHTML text.text  %}
 		</div>
 
 		{% if text.links | length > 0 %}

@@ -8,6 +8,12 @@ module.exports = async () => {
 			"tags":tags[]->,
 			"slug":slug.current,
 		} | order(date desc),
+		"internalTexts":*[_type == "textDocument" && textType == "internalText"]{
+			...,
+			"tags":tags[]->,
+			"slug":slug.current,
+			"text": internalText.text
+		} | order(date desc),
 		"tags":*[_type == "textTag"] | order(priority desc)
 	}`
 

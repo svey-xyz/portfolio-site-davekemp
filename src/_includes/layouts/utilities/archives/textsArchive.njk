@@ -2,8 +2,8 @@
 	Projects Archive Block
 #}
 
-<div class="flex max-w-prose-full">
-	{% asyncEach text in pageData.content.items %}
+<div class="flex flex-col max-w-prose-full space-y-6 mt-4">
+	{% asyncEach text in pageData.content.archiveItems %}
 		{% include "layouts/components/cards/textsArchive-card.njk" %}
 	{% endeach %}
 </div>

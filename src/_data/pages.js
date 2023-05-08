@@ -11,26 +11,23 @@ module.exports = async () => {
 
 	const archivePageQuery = groq`{
 		...,
-		(archiveType == "projectsArchive") => {
-			"tags":select(
-				count(projectsArchive.tags) > 0 => projectsArchive.tags[]->,
-				*[_type == "projectTag"]
-			) | order(priority desc),
-			"items": *[_type == "project" &&
-				count((tags[]._ref)[@ in
-					select(
-						count(^.^.projectsArchive.tags) > 0 => ^.^.projectsArchive.tags[]._ref,
-						*[_type == "projectTag"]._id
-					)
-				]) > 0
-			]${archiveItemQuery}
-		},
+      	(archiveType == "projectsArchive") => {
+        	"tags":select(
+          		count(projectsArchive.tags) > 0 => projectsArchive.tags[]->,
+            	*[_type == "projectTag"]
+          	) | order(priority desc),
+        	"archiveItems":select(
+          		(count(projectsArchive.tags) > 0) =>
+            		*[_type == "project" && count((tags[]._ref)[@ in ^.^.projectsArchive.tags[]._ref]) > 0]${archiveItemQuery},
+          		*[_type == "project"]${archiveItemQuery}
+        	)
+      	},
 		(archiveType == "textsArchive") => {
 			"tags":select(
 				count(textsArchive.tags) > 0 => textsArchive.tags[]->,
 				*[_type == "textTag"]
 			) | order(priority desc),
-			"items": *[_type == "textDocument" &&
+			"archiveItems": *[_type == "textDocument" &&
 				count((tags[]._ref)[@ in 
 					select(
 						count(^.^.textsArchive.tags) > 0 => ^.^.textsArchive.tags[]._ref,

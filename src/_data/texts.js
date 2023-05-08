@@ -12,7 +12,7 @@ module.exports = async () => {
 
 	// const order = `| order(publishedAt asc)`
 	// const query = [filter, projection, order].join(' ').toString()
-	const data = await sanityFetch('projects', query)
+	const data = await sanityFetch('texts', query)
 
 	// const preparePosts = data.map(generateContent);
 

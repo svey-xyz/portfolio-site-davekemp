@@ -2,8 +2,8 @@
 	Projects Archive Block
 #}
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4">
-	{% asyncEach project in pageData.content.items %}
+<div class="masonry-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+	{% asyncEach project in pageData.content.archiveItems %}
 		{% include "layouts/components/cards/projectsArchive-card.njk" %}
 	{% endeach %}
 </div>

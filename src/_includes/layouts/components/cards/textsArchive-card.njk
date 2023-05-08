@@ -22,7 +22,9 @@
 					{% from "layouts/utilities/projectDateTags.njk" import projectDateTags %}
 					{{ projectDateTags(project=text) }}
 				</div>
-				<i class="fa-solid text-2xl fa-up-right-from-square self-center justify-self-end ml-auto"></i>
+				{% if text.textType == "externalText" %}
+					<i class="fa-solid text-2xl fa-up-right-from-square self-center justify-self-end ml-auto"></i>
+				{% endif %}
 			</div>
 			<div class="relative block lg:hidden w-auto max-w-full">
 				{% from "layouts/utilities/projectDateTags.njk" import projectDateTags %}

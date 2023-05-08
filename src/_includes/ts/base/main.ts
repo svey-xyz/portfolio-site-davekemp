@@ -76,7 +76,11 @@ function loadScripts() {
 				},
 				{
 					selector: '#returnTo',
-					scriptPath: ' domUtils/returnTo'
+					scriptPath: 'domUtils/returnTo'
+				},
+				{
+					selector: '.masonry-grid',
+					scriptPath: 'domUtils/masonry'
 				},
 			])
 		}

@@ -7,6 +7,10 @@ module.exports = async () => {
 			...,
 			"slug":slug.current,
 			"tags":tags[]->,
+			"sortByDate":select(
+              defined(date.endDate) => date.endDate,
+              date.date
+            ),
 			links[]{
               	(_type == "externalLink") => {
                 	"url":url,
@@ -23,7 +27,7 @@ module.exports = async () => {
                 	)
               	},
             }
-		} | order(date desc),
+		} | order(sortByDate desc),
 		"tags":*[_type == "projectTag"] | order(priority desc)
 	}`
 

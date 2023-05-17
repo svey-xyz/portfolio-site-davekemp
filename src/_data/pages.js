@@ -5,9 +5,13 @@ const slugify = require('slugify')
 module.exports = async () => {
 	const archiveItemQuery = groq`{
 			...,
+			"sortByDate":select(
+              defined(date.endDate) => date.endDate,
+              date.date
+            ),
 			"slug":slug.current,
 			"tags":tags[]->,
-		} | order(date desc)`
+		} | order(sortByDate desc)`
 
 	const archivePageQuery = groq`{
 		...,

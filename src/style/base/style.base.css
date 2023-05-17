@@ -29,7 +29,7 @@
 	}
 	
 	a {
-		@apply tracking-wider text-inherit;
+		@apply tracking-wider text-primary-text;
 	}
 
 	label {

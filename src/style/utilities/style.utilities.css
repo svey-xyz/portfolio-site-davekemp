@@ -14,7 +14,7 @@
 
 .tag-button {
 	&.active {
-		@apply !text-medium-accent;
+		@apply !text-medium-accent underline;
 	}
 }
 

@@ -25,7 +25,8 @@
 			</div>
 			<div class="relative block w-auto max-w-full">
 				{% from "layouts/utilities/dateTags.njk" import dateTags %}
-				{{ dateTags(item=project) }}
+				{# archiveSlug is set to '' for compatibility with the primary projects archive being the homepage #}
+				{{ dateTags(item=project,archiveSlug='') }}
 			</div>
 			<div class="relative hidden lg:block mt-3">
 				<span class="font-light line-clamp-2 text-primary-text">{{ project.description }}</span>

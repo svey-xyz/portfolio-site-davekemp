@@ -10,12 +10,12 @@
 	{{ dateTags(item=text, archiveSlug=site.navigation.textsPrimaryArchiveSlug) }}
 
 	<div id="{{ text.title | slug }}-content" class="grid gap-y-6 mb-24 pt-6">
-		<div class="max-w-prose-full inline-block">
+		<div class="max-w-prose-full inline-block text-primary-text">
 			{% portableTextToHTML text.text  %}
 		</div>
 
 		{% if text.links | length > 0 %}
-			<span class="text-lg font-bold">Links: </span>
+			<span class="text-lg font-bold text-primary-text">Links: </span>
 			{% for link in text.links %}
 				<a href="{{ link.url }}" target="_blank" class="underline font-light hover:text-medium-accent">{{ link.linkText }}</a>
 			{% endfor %}
@@ -24,12 +24,12 @@
 
 	<div class="w-full py-8 flex flex-row">
 		{% if previousPost %}
-			<span class="">← <a aria-label="Link to the previous item in collection- {{ previousPost.title }}" href="{{ previousPost.url | slug}}" class="hover:underline">
+			<span class="text-primary-text">← <a aria-label="Link to the previous item in collection- {{ previousPost.title }}" href="{{ previousPost.url | slug}}" class="hover:underline">
 				{{ previousPost.data.text.title }}
 			</a></span>	
 		{% endif %} 
 		{% if nextPost %}
-			<span class="justify-self-end ml-auto"><a aria-label="Link to the next item in collection- {{ nextPost.title }}" href="{{ nextPost.url | slug}}" class="hover:underline">
+			<span class="justify-self-end ml-auto text-primary-text"><a aria-label="Link to the next item in collection- {{ nextPost.title }}" href="{{ nextPost.url | slug}}" class="hover:underline">
 				{{ nextPost.data.text.title }}
 			</a> →</span>	
 		{% endif %}

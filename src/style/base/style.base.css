@@ -36,6 +36,10 @@
 		@apply text-primary-text;
 	}
 
+	blockquote {
+		@apply px-4 md:px-8;
+	}
+
 	.main-padding {
 		@apply max-w-screen-xl mx-auto px-6 sm:px-12 md:px-24 transition-spacing duration-200;
 	}

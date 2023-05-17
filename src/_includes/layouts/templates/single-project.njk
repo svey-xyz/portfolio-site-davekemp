@@ -19,7 +19,7 @@
 		{# {{ project.content | markdownify | safe }} #}
 
 		{% if project.links | length > 0 %}
-			<span class="text-lg font-bold">Links: </span>
+			<span class="text-lg font-bold text-primary-text">Links: </span>
 			{% for link in project.links %}
 				<a href="{{ link.url }}" target="_blank" class="underline font-light hover:text-medium-accent">{{ link.linkText }}</a>
 			{% endfor %}
@@ -28,12 +28,12 @@
 
 	<div class="w-full py-8 flex flex-row">
 		{% if previousPost %}
-			<span class="">← <a aria-label="Link to the previous item in collection- {{ previousPost.title }}" href="{{ previousPost.url | slug}}" class="hover:underline">
+			<span class="text-primary-text">← <a aria-label="Link to the previous item in collection- {{ previousPost.title }}" href="{{ previousPost.url | slug}}" class="hover:underline">
 				{{ previousPost.data.project.title }}
 			</a></span>	
 		{% endif %} 
 		{% if nextPost %}
-			<span class="justify-self-end ml-auto"><a aria-label="Link to the next item in collection- {{ nextPost.title }}" href="{{ nextPost.url | slug}}" class="hover:underline">
+			<span class="justify-self-end ml-auto text-primary-text"><a aria-label="Link to the next item in collection- {{ nextPost.title }}" href="{{ nextPost.url | slug}}" class="hover:underline">
 				{{ nextPost.data.project.title }}
 			</a> →</span>	
 		{% endif %}

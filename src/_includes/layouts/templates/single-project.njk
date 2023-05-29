@@ -12,7 +12,7 @@
 
 	<div id="{{ project.title | slug }}-content" class="grid gap-y-6 mb-24 pt-6">
 		<div id="{{ project.title | slug }}-description" class="max-w-prose inline-block">
-			{{ project.description | markdownify | safe }}
+			{% portableTextToHTML project.description %}
 		</div>
 
 		{# markdownify needed for embeds which aren't returned as stragiht markdown like the rest of the objects #}

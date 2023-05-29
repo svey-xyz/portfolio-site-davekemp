@@ -12,7 +12,7 @@ module.exports = async () => {
 			...,
 			"tags":tags[]->,
 			"slug":slug.current,
-			"text": internalText.text
+			"text": internalText.text[]{..., asset->}
 		} | order(date desc),
 		"tags":*[_type == "textTag"] | order(priority desc)
 	}`

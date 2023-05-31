@@ -6,7 +6,13 @@ module.exports = async () => {
 		"texts":*[_type == "textDocument"]{
 			...,
 			"tags":tags[]->,
-			"slug":slug.current,
+			"link":select(
+              textType == "internalText" => '/' + (*[_id == "navigation"] {
+                "textsPrimaryArchiveSlug":textsPage->slug.current
+              }.textsPrimaryArchiveSlug)[0] + '/' + slug.current,
+              textType == "externalText" => externalText.link.url,
+              textType == "fileText" => fileText.file.asset->.url
+            ),
 		} | order(date desc),
 		"internalTexts":*[_type == "textDocument" && textType == "internalText"]{
 			...,

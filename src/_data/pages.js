@@ -3,7 +3,7 @@ const groq = require('groq')
 const slugify = require('slugify')
 
 module.exports = async () => {
-	const archiveItemQuery = groq`{
+	const projectArchiveItemQuery = groq`{
 			...,
 			"sortByDate":select(
               defined(date.endDate) => date.endDate,
@@ -11,6 +11,23 @@ module.exports = async () => {
             ),
 			"slug":slug.current,
 			"tags":tags[]->,
+		} | order(sortByDate desc)`
+
+	const textArchiveItemQuery = groq`{
+			...,
+			"sortByDate":select(
+              defined(date.endDate) => date.endDate,
+              date.date
+            ),
+			"slug":slug.current,
+			"tags":tags[]->,
+			"link":select(
+              textType == "internalText" => '/' + (*[_id == "navigation"] {
+                "textsPrimaryArchiveSlug":textsPage->slug.current
+              }.textsPrimaryArchiveSlug)[0] + '/' + slug.current,
+              textType == "externalText" => externalText.link.url,
+              textType == "fileText" => fileText.file.asset->.url
+            ),
 		} | order(sortByDate desc)`
 
 	const archivePageQuery = groq`{
@@ -22,8 +39,8 @@ module.exports = async () => {
           	) | order(priority desc),
         	"archiveItems":select(
           		(count(projectsArchive.tags) > 0) =>
-            		*[_type == "project" && count((tags[]._ref)[@ in ^.^.projectsArchive.tags[]._ref]) > 0]${archiveItemQuery},
-          		*[_type == "project"]${archiveItemQuery}
+            		*[_type == "project" && count((tags[]._ref)[@ in ^.^.projectsArchive.tags[]._ref]) > 0]${projectArchiveItemQuery},
+          		*[_type == "project"]${projectArchiveItemQuery}
         	)
       	},
 		(archiveType == "textsArchive") => {
@@ -33,8 +50,8 @@ module.exports = async () => {
           	) | order(priority desc),
         	"archiveItems":select(
           		(count(textsArchive.tags) > 0) =>
-            		*[_type == "textDocument" && count((tags[]._ref)[@ in ^.^.textsArchive.tags[]._ref]) > 0]${archiveItemQuery},
-          		*[_type == "textDocument"]${archiveItemQuery}
+            		*[_type == "textDocument" && count((tags[]._ref)[@ in ^.^.textsArchive.tags[]._ref]) > 0]${textArchiveItemQuery},
+          		*[_type == "textDocument"]${textArchiveItemQuery}
         	)
       	}
 	}`

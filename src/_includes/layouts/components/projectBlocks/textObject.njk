@@ -1,0 +1,10 @@
+{% macro projectBlock(gallery) %}
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+	{% asyncEach image in gallery %}
+		<div id="{{ section._type }}" class="{{ section._type }} relative flex">
+			{% include ("layouts/components/projectBlocks/" + section._type + ".njk") %}
+		</div>
+	{% endeach %}
+</div>
+{% endmacro %}

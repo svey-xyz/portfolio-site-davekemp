@@ -26,6 +26,13 @@ module.exports = async () => {
                   		reference->title
                 	)
               	},
+            },
+			"content":content[]{
+              	...,
+              	gallery[]{
+                	...,
+                	asset->
+              	}
             }
 		} | order(sortByDate desc),
 		"tags":*[_type == "projectTag"] | order(priority desc)

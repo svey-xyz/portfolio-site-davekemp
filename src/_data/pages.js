@@ -6,8 +6,8 @@ module.exports = async () => {
 	const projectArchiveItemQuery = groq`{
 			...,
 			"sortByDate":select(
-              defined(date.endDate) => date.endDate,
-              date.date
+              	defined(date.endDate) => date.endDate,
+              	date.date
             ),
 			"slug":slug.current,
 			"tags":tags[]->,
@@ -16,17 +16,17 @@ module.exports = async () => {
 	const textArchiveItemQuery = groq`{
 			...,
 			"sortByDate":select(
-              defined(date.endDate) => date.endDate,
-              date.date
+              	defined(date.endDate) => date.endDate,
+              	date.date
             ),
 			"slug":slug.current,
 			"tags":tags[]->,
 			"link":select(
-              textType == "internalText" => '/' + (*[_id == "navigation"] {
-                "textsPrimaryArchiveSlug":textsPage->slug.current
-              }.textsPrimaryArchiveSlug)[0] + '/' + slug.current,
-              textType == "externalText" => externalText.link.url,
-              textType == "fileText" => fileText.file.asset->.url
+              	textType == "internalText" => '/' + (*[_id == "navigation"] {
+                	"textsPrimaryArchiveSlug":textsPage->slug.current
+              	}.textsPrimaryArchiveSlug)[0] + '/' + slug.current,
+              	textType == "externalText" => externalText.link.url,
+              	textType == "fileText" => fileText.file.asset->.url
             ),
 		} | order(sortByDate desc)`
 

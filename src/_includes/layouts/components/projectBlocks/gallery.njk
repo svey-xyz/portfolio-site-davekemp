@@ -1,0 +1,20 @@
+<div class="masonry-grid -mx-2 !content-start">
+	{% set imageID = 0 %}
+	{% asyncEach image in projectSection.gallery %}
+		{% set altText %}
+			{% if image.asset.altText != null %}
+				{{ image.asset.altText }}
+			{% else %}
+				Project: {{ project.title }}; Image Title: {% if image.asset.title != null %} {{ image.asset.title }} {% else %} {{ imageID + 1 }} {% endif %}
+			{% endif %}
+		{% endset %}
+		<div class="masonry-item flex flex-col px-2 pb-4">
+			{% image image, "relative m-0 w-full h-auto min-w-full", altText %}
+			<span class="font-light mt-4">
+				<span class="font-bold inline">{{ image.asset.title }} - </span>
+				{{ image.asset.description }}
+			</span>
+		</div>
+		{% set imageID = imageID + 1 %}
+	{% endeach %}
+</div>

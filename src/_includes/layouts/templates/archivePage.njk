@@ -7,9 +7,11 @@
 	<div class="relative select-none py-4">
 
 		{% if (pageData.content.filterable) %}
-			<button class="tag-button text-xl font-medium text-primary-text" data-tag="all" title="All">
-				all
-			</button><span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>
+			{% if (pageData.content.allTagPriority > -1) %}
+				<button class="tag-button text-xl font-medium text-primary-text" data-tag="all" title="All">
+					all
+				</button><span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>
+			{% endif %}
 
 			{% for tag in pageData.content.tags %}
 				<button class="tag-button text-xl font-medium text-primary-text" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
@@ -20,5 +22,5 @@
 
 	</div>
 
-	{% include ('layouts/utilities/archives/' + pageData.content.archiveType + '.njk') %}
+	{% include ('layouts/templates/archives/' + pageData.content.archiveType + '.njk') %}
 </div>

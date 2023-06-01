@@ -25,11 +25,9 @@ export const mount = (container: HTMLElement) => {
 
 function activeNav() {
 	const urlPathPart: string = (new URL(window.location.href).pathname).split('/')[1];
-	console.log(urlPathPart)
 	header.querySelectorAll('.nav-item')!.forEach(navItem => {
 		if (navItem.getAttribute('navID') == urlPathPart) navItem.classList.add('active-page')
 		else if (urlPathPart == '' && navItem.getAttribute('navHome') == 'home') {
-			console.log('heyo')
 			navItem.classList.add('active-page')
 		}
 	});

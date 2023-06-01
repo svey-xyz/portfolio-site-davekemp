@@ -1,9 +1,9 @@
-// const FlexMasonry = require('flexmasonry') - doesnt work?
-
-declare const FlexMasonry: any;
+// const FlexMasonry = require('flexmasonry') - doesnt load file
+// declare const FlexMasonry: any;
+import { FlexMasonry } from "../../utilities/flexmasonry";
 export const mount = (container: Element) => {
-	console.log(FlexMasonry)
-	FlexMasonry.init([container], {
+	// console.log(FlexMasonry)
+	const masonry = new FlexMasonry(container as HTMLElement, {
 		/*
 		* If `responsive` is `true`, `breakpointCols` will be used to determine
 		* how many columns a grid should have at a given responsive breakpoint.
@@ -18,5 +18,5 @@ export const mount = (container: Element) => {
 			'min-width: 768px': 2,
 			'min-width: 480px': 1,
 		},
-	})
+	});
 }

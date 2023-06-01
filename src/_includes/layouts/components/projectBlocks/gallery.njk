@@ -1,4 +1,4 @@
-<div class="masonry-grid -mx-2 !content-start">
+<div class="masonry-grid flexmasonry flex-masonry-cols-1 md:flex-masonry-cols-2 lg:flexmasonry-cols-3 -mx-2">
 	{% set imageID = 0 %}
 	{% asyncEach image in projectSection.gallery %}
 		{% set altText %}
@@ -8,7 +8,7 @@
 				Project: {{ project.title }}; Image Title: {% if image.asset.title != null %} {{ image.asset.title }} {% else %} {{ imageID + 1 }} {% endif %}
 			{% endif %}
 		{% endset %}
-		<div class="masonry-item flex flex-col px-2 pb-4">
+		<div class="flexmasonry-item flex flex-col px-2 pb-4">
 			{% image image, "relative m-0 w-full h-auto min-w-full", altText %}
 			<span class="font-light mt-4">
 				<span class="font-bold inline">{{ image.asset.title }} - </span>

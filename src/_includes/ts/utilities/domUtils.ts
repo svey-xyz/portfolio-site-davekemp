@@ -73,8 +73,7 @@ export class domUtils {
 	 * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
 	 * @param  {Function} fn The function to debounce
 	 */
-	debounce(this: any, fn: any, delay: number = 0) {
-
+	debounce(fn: any, delay: number = 0) {
 		// Setup a timer
 		let timeout: number;
 
@@ -92,6 +91,7 @@ export class domUtils {
 			// Setup the new requestAnimationFrame()
 			timeout = window.requestAnimationFrame(function () {
 				utils.scriptUtils.requestTimeout(fn, delay);
+				// fn.apply(context, args)
 			});
 
 		}

@@ -11,15 +11,22 @@ export class advancedBase extends base {
 	timer: any
 	touch: boolean = false
 	ongoingTouches: Array<Touch> = []
+	debounceDelay: number = 100
 
 	inputHandler: (e: Event) => void;
 	resizeHandler: (e: Event) => void;
+	loadHandler: () => void;
+
 
 	constructor(container: HTMLElement, args?: {}) {
 		super(container, args);
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
+		this.resizeHandler = this.resize.bind(this);
+		this.loadHandler = this.load.bind(this);
+
+
 
 		this.container.addEventListener('click', this.inputHandler);
 
@@ -34,8 +41,8 @@ export class advancedBase extends base {
 
 		this.container.addEventListener('touchmove', this.inputHandler);
 
-		this.resizeHandler = this.resize.bind(this);
-		window.addEventListener('resize', utils.domUtils.debounce(this.resizeHandler));
+		window.addEventListener('resize', this.resizeHandler);
+		window.addEventListener('load', this.loadHandler);
 	}
 
 	init(): void { }
@@ -55,6 +62,10 @@ export class advancedBase extends base {
 	}
 
 	resize(e: Event): void { };
+	load(): void { };
+
+}
+advancedBase.prototype.load = function () {
 }
 
 advancedBase.prototype.handleInput = function (e: Event) {

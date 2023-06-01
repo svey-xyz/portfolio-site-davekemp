@@ -25,7 +25,10 @@ module.exports = {
 
 	// entry files
 	entry: {
-		main: './src/_includes/ts/base/main.ts'
+		main: './src/_includes/ts/base/main.ts',
+		// flexmasonry: './node_modules/flexmasonry/dist/flexmasonry.js',
+		// flexmasonrycss: './node_modules/flexmasonry/dist/flexmasonry.css'
+
 	},
 
 	// output bundles (location)

@@ -19,4 +19,6 @@ export const mount = (container: Element) => {
 			'min-width: 480px': 1,
 		},
 	});
+	container.classList.remove('masonry-grid')
+
 }

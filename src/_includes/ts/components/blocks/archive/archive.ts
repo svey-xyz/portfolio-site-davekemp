@@ -21,8 +21,10 @@ function initializeArchive(): void {
 
 	const url = new URL(window.location.href);
 
-	const filterTag = new URL(window.location.href).searchParams.get(filterParam)
-	filterTag ? tagSelect(filterTag) : tagSelect('all')
+	let filterTag = new URL(window.location.href).searchParams.get(filterParam)
+	filterTag = filterTag ? filterTag : tagButtons[0].getAttribute('data-tag') ? tagButtons[0].getAttribute('data-tag') : '';
+	tagSelect(filterTag!)
+	
 }
 
 function initElements() : void {
@@ -48,7 +50,7 @@ function tagClick(e : Event) : void {
 }
 
 function tagSelect(tag : string) : void {
-	
+	console.log('run')
 	for (let b of tagButtons) {
 		if (b.getAttribute('data-tag') != tag) b.classList.remove('active');
 		else b.classList.add('active');

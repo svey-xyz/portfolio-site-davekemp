@@ -2,21 +2,24 @@
 	{% from "layouts/components/titles/standard.njk" import title %}
 	{{ title(titleText=pageData.title) }}
 {% endif %}
+{% set allButtonPlaced = false %}
 
 <div id="{{pageData.title|slug}}-archive" data-filterable="{{ pageData.content.filterable }}" name="{{pageData.title|slug}}" class="archive main-padding w-full">
 	<div class="relative select-none py-4">
 
 		{% if (pageData.content.filterable) %}
-			{% if (pageData.content.allTagPriority > -1) %}
-				<button class="tag-button text-xl font-medium text-primary-text" data-tag="all" title="All">
-					all
-				</button><span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>
-			{% endif %}
-
 			{% for tag in pageData.content.tags %}
-				<button class="tag-button text-xl font-medium text-primary-text" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
-					{{ tag.title | slug }}
-				</button><span class="text-xl font-medium text-primary-text">{% if not loop.last %},{% endif %}&nbsp&nbsp</span>
+				{% if pageData.content.allTagPriority >= tag.priority and not allButtonPlaced %}
+					<button class="tag-button text-xl font-medium text-primary-text" data-tag="all" title="All">
+						all
+					</button><span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>
+					{% set allButtonPlaced = true %}
+				{% endif %}
+				{% if tag.priority > -1 %}
+					<button class="tag-button text-xl font-medium text-primary-text" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
+						{{ tag.title | slug }}
+					</button><span class="text-xl font-medium text-primary-text">{% if not loop.last %},{% endif %}&nbsp&nbsp</span>
+				{% endif %}
 			{% endfor %}
 		{% endif %}
 

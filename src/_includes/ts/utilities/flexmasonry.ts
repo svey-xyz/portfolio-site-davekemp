@@ -34,6 +34,7 @@ export class FlexMasonry extends advancedBase {
 
 		this.setUp();
 		this.setHeight();
+		this.resize();
 	}
 
 	setUp() {
@@ -60,6 +61,19 @@ export class FlexMasonry extends advancedBase {
 		this.refresh();
 	}
 
+	setOrder() {
+		let order = 1;
+		Array.from(this.container.children as HTMLCollectionOf<HTMLElement>).forEach((item: HTMLElement) => {
+			if (item.classList.contains('flexmasonry-break') || item.classList.contains('hidden')) {
+				return;
+			}
+
+			item.style.order = `${order}`
+			console.log(this.getCurrentCols())
+			order + 1 > this.getCurrentCols() ? order = 1 : order += 1;
+		});
+	}
+
 	setHeight() {
 		if (this.getCurrentCols() < 2) {
 			this.container.style.removeProperty('height');
@@ -69,7 +83,7 @@ export class FlexMasonry extends advancedBase {
 		let heights:Array<number> = [];
 
 		Array.from(this.container.children as HTMLCollectionOf<HTMLElement>).forEach((item: HTMLElement) => {
-			if (item.classList.contains('flexmasonry-break')) {
+			if (item.classList.contains('flexmasonry-break') || item.classList.contains('hidden')) {
 				return;
 			}
 
@@ -139,6 +153,7 @@ export class FlexMasonry extends advancedBase {
 	refresh(options = {}) {
 		this.args = Object.assign(this.defaultOptions, options);
 
+		this.setOrder();
 		this.setColsClass();
 		this.removeBreakHTMLElements();
 		this.addBreakHTMLElements();

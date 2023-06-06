@@ -2,7 +2,6 @@
 // declare const FlexMasonry: any;
 import { FlexMasonry } from "../../utilities/flexmasonry";
 export const mount = (container: Element) => {
-	// console.log(FlexMasonry)
 	const masonry = new FlexMasonry(container as HTMLElement, {
 		/*
 		* If `responsive` is `true`, `breakpointCols` will be used to determine
@@ -20,5 +19,4 @@ export const mount = (container: Element) => {
 		},
 	});
 	container.classList.remove('masonry-grid');
-
 }

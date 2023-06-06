@@ -9,7 +9,7 @@
 /{{ site.navigation.projectsPrimaryArchiveSlug | slug }}/{{ project.slug | slug }}
 {% endset %}
 
-<div class="archive-card masonry-item group relative flex h-auto px-2 pb-4" data-tags='[{{ dataTags }}]'>
+<div class="archive-card masonry-item group relative h-auto px-2 pb-4 hidden" data-tags='[{{ dataTags }}]'>
 
 	<div class="block relative w-full h-auto">
 		<a aria-label="Link to the project page for- {{ project.title }}" href="{{ projectLink }}">

@@ -2,16 +2,42 @@
 *  Add sorting of projects
 */
 
+import { FlexMasonry } from "../../../utilities/flexmasonry";
+
 let projectCards = Array<projectCard>();
 let tagButtons = Array<HTMLElement>();
 let archiveContainer:HTMLElement;
 let filterParam: string = 'archive';
+let masonry: FlexMasonry
 
 
 export const mount = (container: Element) => {
 	archiveContainer = <HTMLElement>container;
+	initMasonry();
 
 	initializeArchive();
+}
+
+function initMasonry(): FlexMasonry {
+	const container = archiveContainer.querySelector('.masonry-grid')
+	masonry = new FlexMasonry(container as HTMLElement, {
+		/*
+		* If `responsive` is `true`, `breakpointCols` will be used to determine
+		* how many columns a grid should have at a given responsive breakpoint.
+		*/
+		responsive: true,
+		/*
+		 * A list of how many columns should be shown at different responsive
+		 * breakpoints, defined by media queries.
+		 */
+		breakpointCols: {
+			'min-width: 976px': 3,
+			'min-width: 768px': 2,
+			'min-width: 480px': 1,
+		},
+	});
+	container?.classList.remove('masonry-grid');
+	return masonry;
 }
 
 function initializeArchive(): void {
@@ -50,13 +76,13 @@ function tagClick(e : Event) : void {
 }
 
 function tagSelect(tag : string) : void {
-	console.log('run')
 	for (let b of tagButtons) {
 		if (b.getAttribute('data-tag') != tag) b.classList.remove('active');
 		else b.classList.add('active');
 	}
 	
 	archiveSort(tag)
+	masonry.refresh();
 }
 
 function archiveSort(tag : string) {
@@ -66,9 +92,14 @@ function archiveSort(tag : string) {
 
 	for (let card of projectCards) {
 		if (card.tags.includes(tag) || all) {
-			card.container.style.display = "flex";
+			card.container.classList.add("flex");
+			card.container.classList.remove("hidden");
+
+
 		} else {
-			card.container.style.display = "none";
+			card.container.classList.add("hidden");
+			card.container.classList.remove("flex");
+
 		}
 	}
 }

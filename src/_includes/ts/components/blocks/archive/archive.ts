@@ -18,8 +18,9 @@ export const mount = (container: Element) => {
 	initializeArchive();
 }
 
-function initMasonry(): FlexMasonry {
+function initMasonry(): FlexMasonry | null {
 	const container = archiveContainer.querySelector('.masonry-grid')
+	if (container == null) return null;
 	masonry = new FlexMasonry(container as HTMLElement, {
 		/*
 		* If `responsive` is `true`, `breakpointCols` will be used to determine
@@ -82,7 +83,7 @@ function tagSelect(tag : string) : void {
 	}
 	
 	archiveSort(tag)
-	masonry.refresh();
+	if (masonry) masonry.refresh();
 }
 
 function archiveSort(tag : string) {

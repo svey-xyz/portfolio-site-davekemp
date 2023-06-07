@@ -19,9 +19,8 @@
 	{% endeach %}
 </div>
 
-<div class="fixed inset-0 min-h-full flex flex-col items-center justify-center
-	before:-z-1 before:absolute before:inset-0 before:bg-black before:opacity-90 pt-[--header-total-height]">
-	{# <div class="text-white">Test</div> #}
+<div class="z-20 fixed inset-0 min-h-full flex flex-col items-center justify-center
+	before:-z-1 before:absolute before:inset-0 before:bg-black before:opacity-90 pt-[--header-total-height] w-full">
 	<div class="flex main-padding flex-row justify-end w-full right-0 pt-[--header-total-height] top-4 absolute">
 		<label class="group relative right-0 w-[--header-item-height] h-[--header-item-height] z-10 cursor-pointer block">
 			<input aria-label="Close Gallery" id="galleryButton" type="checkbox" class="left-1/2 -translate-x-1/2
@@ -43,16 +42,14 @@
 				after:bg-white
 			"/>
 		</label>
-
 	</div>
-	<div class="flex max-h-[60%] max-w-[80%] -mt-12">
-		{% image projectSection.gallery[0], "relative m-0 w-full h-auto object-contain", altText %}
+	<div class="flex flex-col my-auto main-padding max-h-[85%] max-w-full pb-16">
+		{% image projectSection.gallery[0], "relative m-0 w-full h-auto max-h-full max-w-full object-contain", altText %}
+		<span class="font-light mt-2 text-white text-center">
+			<span class="font-bold inline text-white">{{ projectSection.gallery[0].asset.title }} - </span>
+			{{ projectSection.gallery[0].asset.description }}
+		</span>
 	</div>
-
-	<span class="font-light mt-2 text-white main-padding">
-		<span class="font-bold inline">{{ projectSection.gallery[0].asset.title }} - </span>
-		{{ projectSection.gallery[0].asset.description }}
-	</span>
 	<div class="w-full pt-4 flex flex-row main-padding text-white absolute bottom-4">
 		<span class="text-white">← <a aria-label="Previous image in gallery." href="" class="text-white font-extrabold hover:underline">
 			prev
@@ -61,5 +58,4 @@
 			next
 		</a> →</span>	
 	</div>
-
 </div>

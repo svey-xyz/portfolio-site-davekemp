@@ -18,7 +18,48 @@
 		{% set imageID = imageID + 1 %}
 	{% endeach %}
 </div>
+
 <div class="fixed inset-0 min-h-full flex flex-col items-center justify-center
-	before:-z-1 before:absolute before:inset-0 before:bg-black before:opacity-90">
-		<div class="text-primary-text">Test</div>
+	before:-z-1 before:absolute before:inset-0 before:bg-black before:opacity-90 pt-[--header-total-height]">
+	{# <div class="text-white">Test</div> #}
+	<div class="flex main-padding flex-row justify-end w-full right-0 pt-[--header-total-height] top-4 absolute">
+		<label class="group relative right-0 w-[--header-item-height] h-[--header-item-height] z-10 cursor-pointer block">
+			<input aria-label="Close Gallery" id="galleryButton" type="checkbox" class="left-1/2 -translate-x-1/2
+				cursor-pointer transition-all translate-y-0.5 appearance-none
+				h-0
+
+				before:relative before:origin-center before:rounded before:block before:w-full before:h-1 before:bg-opposite-bg before:top-0
+
+				relative origin-center block rounded w-full bg-opposite-bg top-2
+
+				after:relative after:origin-center after:rounded after:block after:w-full after:h-1 after:bg-opposite-bg after:-top-1
+
+				motion-safe:group-hover:scale-110
+
+				duration-0 before:duration-200 after:duration-200
+
+				before:-rotate-45 before:bg-white
+				after:rotate-45
+				after:bg-white
+			"/>
+		</label>
+
+	</div>
+	<div class="flex max-h-[60%] max-w-[80%] -mt-12">
+		{% image projectSection.gallery[0], "relative m-0 w-full h-auto object-contain", altText %}
+	</div>
+
+	<span class="font-light mt-2 text-white main-padding">
+		<span class="font-bold inline">{{ projectSection.gallery[0].asset.title }} - </span>
+		{{ projectSection.gallery[0].asset.description }}
+	</span>
+	<div class="w-full pt-4 flex flex-row main-padding text-white absolute bottom-4">
+		<span class="text-white">← <a aria-label="Previous image in gallery." href="" class="text-white font-extrabold hover:underline">
+			prev
+		</a></span>	
+		<span class="justify-self-end ml-auto text-white"><a aria-label="Next image in gallery." href="" class="text-white font-extrabold hover:underline">
+			next
+		</a> →</span>	
+	</div>
+
 </div>

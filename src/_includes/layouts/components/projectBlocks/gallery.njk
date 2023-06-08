@@ -1,6 +1,6 @@
 <div class="masonry-grid -mx-2">
 	{% set imageID = 0 %}
-	{% asyncEach image in projectSection.gallery %}
+	{% asyncEach image in section.gallery %}
 		{% set altText %}
 			{% if image.asset.altText != null %}
 				{{ image.asset.altText }}
@@ -46,7 +46,7 @@
 		</label>
 	</div>
 	{% set imageID = 0 %}
-	{% asyncEach image in projectSection.gallery %}
+	{% asyncEach image in section.gallery %}
 		{% set altText %}
 			{% if image.asset.altText != null %}
 				{{ image.asset.altText }}

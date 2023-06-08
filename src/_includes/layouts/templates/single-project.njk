@@ -28,7 +28,6 @@
 		{% if project.content | length > 0 %}
 			{% set projectSectionID = 0 %}
 			{% asyncEach section in project.content %}
-				{% set projectSection = section %}
 				<div id="{{ section._type }}" class="{{ section._type }} relative flex mt-4">
 					{% include ("layouts/components/projectBlocks/" + section._type + ".njk") %}
 				</div>

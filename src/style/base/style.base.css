@@ -45,7 +45,7 @@
 	}
 
 	.block-padding {
-		@apply my-8 md:my-12;
+		@apply my-6;
 	}
 
 	.top-block {

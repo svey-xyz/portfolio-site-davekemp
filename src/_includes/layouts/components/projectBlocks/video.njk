@@ -1,0 +1,10 @@
+
+<div class="relative flex flex-col justify-center items-center w-full">
+	{% set videoProperties = {url:section.url, thumbnail:section.thumbnail, title:section.title} %}
+	{% include ("layouts/utilities/video.njk") %}
+
+	<span class="font-light mt-4 text-primary-text">
+		<span class="font-bold inline text-primary-text">{{ section.title }} {% if section.description | length > 0 %}-{% endif %} </span>
+		<span class="">{{ section.description }}</span>
+	</span>
+</div>

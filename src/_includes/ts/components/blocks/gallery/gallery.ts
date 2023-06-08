@@ -66,6 +66,7 @@ class lightbox extends advancedBase{
 
 	switchState(state: boolean) {
 		this.state = state;
+		this.state ? utils.disableScroll() : utils.enableScroll()
 		this.container?.classList[this.state ? 'remove' : 'add']('hidden');
 	}
 

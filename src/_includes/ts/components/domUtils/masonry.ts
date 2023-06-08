@@ -1,6 +1,6 @@
 // const FlexMasonry = require('flexmasonry') - doesnt load file
 // declare const FlexMasonry: any;
-import { FlexMasonry } from "../../utilities/flexmasonry";
+import { FlexMasonry } from "../domUtils/flexmasonry";
 export const mount = (container: Element) => {
 	const masonry = new FlexMasonry(container as HTMLElement, {
 		/*

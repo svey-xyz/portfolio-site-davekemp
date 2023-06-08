@@ -1,4 +1,4 @@
-import { advancedBase } from "../base/advancedBase";
+import { advancedBase } from "../../base/advancedBase";
 
 export class FlexMasonry extends advancedBase {
 

@@ -49,7 +49,9 @@ export class advancedBase extends base {
 	handleInput(e: Event): void { };
 	click(e: Event): void { };
 	holdTouch(e: Event): void { };
-	touchMove(e: Event): void { };
+	touchMove(e: Event): void { 
+		
+	};
 	touchStart(e: Event): void {
 		this.timer = setInterval(() => {
 			this.holdTouch(e)

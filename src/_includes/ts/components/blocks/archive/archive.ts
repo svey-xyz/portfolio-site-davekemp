@@ -2,7 +2,7 @@
 *  Add sorting of projects
 */
 
-import { FlexMasonry } from "../../../utilities/flexmasonry";
+import { FlexMasonry } from "../../domUtils/flexmasonry";
 
 let projectCards = Array<projectCard>();
 let tagButtons = Array<HTMLElement>();

@@ -2,7 +2,7 @@ import { colourUtils } from "../utilities/colourUtils";
 import { mathUtils } from '../utilities/mathUtils'
 import { domUtils } from '../utilities/domUtils'
 import { scriptUtils } from '../utilities/scriptUtils'
-
+import { disableScroll, enableScroll } from "../components/domUtils/stopScroll";
 
 /**
  * Utilities Class
@@ -15,6 +15,9 @@ export class utils {
 	private mathUtilsStore: mathUtils | undefined
 	private domUtilsStore: domUtils | undefined
 	private scriptUtilsStore: scriptUtils | undefined
+	public disableScroll: Function = disableScroll
+	public enableScroll: Function = enableScroll
+
 
 	constructor() {
 	}

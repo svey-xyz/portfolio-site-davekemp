@@ -12,7 +12,7 @@ class videoPlayer extends advancedBase{
 	playerContainer: HTMLElement
 	embedType: string
 	videoID: string
-	player: any
+	player: Plyr | undefined
 
 	constructor(container: HTMLElement, args?: {}) {
 		super(container, args);

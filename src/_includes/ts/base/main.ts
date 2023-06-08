@@ -82,6 +82,10 @@ function loadScripts() {
 					selector: '.masonry-grid',
 					scriptPath: 'domUtils/masonry'
 				},
+				{
+					selector: '.gallery',
+					scriptPath: 'blocks/gallery/gallery'
+				}
 			])
 		}
 	)

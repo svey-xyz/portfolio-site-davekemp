@@ -8,8 +8,10 @@
 				Project: {{ project.title }}; Image Title: {% if image.asset.title != null %} {{ image.asset.title }} {% else %} {{ imageID + 1 }} {% endif %}
 			{% endif %}
 		{% endset %}
-		<div class="flex flex-col px-2 pb-4">
-			{% image image, "relative m-0 w-full h-auto min-w-full", altText %}
+
+		<div class="gallery-image flex flex-col px-2 pb-4"
+			data-imageID="{{ imageID }}" data-imageTitle="{{ image.asset.title }}" data-imageDescription="{{ image.asset.description }}">
+			{% image image, "relative m-0 w-full h-auto min-w-full cursor-pointer", altText %}
 			<span class="font-light mt-4 text-primary-text">
 				<span class="font-bold inline">{{ image.asset.title }} - </span>
 				{{ image.asset.description }}
@@ -19,11 +21,11 @@
 	{% endeach %}
 </div>
 
-<div class="z-20 fixed inset-0 min-h-full flex flex-col items-center justify-center
+<div class="lightbox flex hidden z-20 fixed inset-0 min-h-full flex-col items-center justify-center
 	before:-z-1 before:absolute before:inset-0 before:bg-black before:opacity-90 pt-[--header-total-height] w-full">
 	<div class="flex main-padding flex-row justify-end w-full right-0 pt-[--header-total-height] top-4 absolute">
 		<label class="group relative right-0 w-[--header-item-height] h-[--header-item-height] z-10 cursor-pointer block">
-			<input aria-label="Close Gallery" id="galleryButton" type="checkbox" class="left-1/2 -translate-x-1/2
+			<button aria-label="Close Gallery" class="lightbox-close left-1/2 -translate-x-1/2
 				cursor-pointer transition-all translate-y-0.5 appearance-none
 				h-0
 
@@ -40,22 +42,38 @@
 				before:-rotate-45 before:bg-white
 				after:rotate-45
 				after:bg-white
-			"/>
+			"></button>
 		</label>
 	</div>
-	<div class="flex flex-col my-auto main-padding max-h-[85%] max-w-full pb-16">
-		{% image projectSection.gallery[0], "relative m-0 w-full h-auto max-h-full max-w-full object-contain", altText %}
-		<span class="font-light mt-2 text-white text-center">
-			<span class="font-bold inline text-white">{{ projectSection.gallery[0].asset.title }} - </span>
-			{{ projectSection.gallery[0].asset.description }}
-		</span>
-	</div>
-	<div class="w-full pt-4 flex flex-row main-padding text-white absolute bottom-4">
-		<span class="text-white">← <a aria-label="Previous image in gallery." href="" class="text-white font-extrabold hover:underline">
-			prev
-		</a></span>	
-		<span class="justify-self-end ml-auto text-white"><a aria-label="Next image in gallery." href="" class="text-white font-extrabold hover:underline">
-			next
-		</a> →</span>	
+	{% set imageID = 0 %}
+	{% asyncEach image in projectSection.gallery %}
+		{% set altText %}
+			{% if image.asset.altText != null %}
+				{{ image.asset.altText }}
+			{% else %}
+				Project: {{ project.title }}; Image Title: {% if image.asset.title != null %} {{ image.asset.title }} {% else %} {{ imageID + 1 }} {% endif %}
+			{% endif %}
+		{% endset %}
+
+		<div class="lightbox-image flex flex-col my-auto main-padding max-h-[85%] max-w-full pb-16 hidden" data-imageID="{{ imageID }}">
+			{% image image, "relative m-0 w-full h-auto max-h-full max-w-full object-contain", altText %}
+			<span class="font-light mt-2 text-white text-center">
+				<span class="lightbox-title font-bold inline text-white">{{ image.asset.title }} - </span>
+				<span class="lightbox-description">{{ image.asset.description }}</span>
+			</span>
+		</div>
+		{% set imageID = imageID + 1 %}
+	{% endeach %}
+
+	
+
+
+	<div class="w-full pt-4 flex flex-row main-padding text-white absolute bottom-4 select-none">
+		<a aria-label="Previous image in gallery." class="lightbox-prev text-white font-extrabold cursor-pointer hover:underline">
+			← prev
+		</a>
+		<a aria-label="Next image in gallery."class="lightbox-next justify-self-end ml-auto text-white font-extrabold cursor-pointer hover:underline">
+			next →
+		</a>	
 	</div>
 </div>

@@ -69,7 +69,6 @@ export class FlexMasonry extends advancedBase {
 			}
 
 			item.style.order = `${order}`
-			console.log(this.getCurrentCols())
 			order + 1 > this.getCurrentCols() ? order = 1 : order += 1;
 		});
 	}

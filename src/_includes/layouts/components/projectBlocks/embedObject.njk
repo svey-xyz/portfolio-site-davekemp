@@ -1,10 +1,7 @@
-{# {% macro projectBlock(gallery) %}
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-	{% asyncEach image in gallery %}
-		<div id="{{ section._type }}" class="{{ section._type }} relative flex">
-			{% include ("layouts/components/projectBlocks/" + section._type + ".njk") %}
-		</div>
-	{% endeach %}
+<div class="relative flex flex-col justify-center items-center w-full">
+	<embed type="{{section.embedType}}" src="{{section.url}}" width="{{section.width}}%" height="{{section.height}}px">
+	<span class="font-light mt-4 text-primary-text">
+		<span class="font-bold inline text-primary-text">{{ section.title }} {% if section.description | length > 0 %}-{% endif %} </span>
+		<span class="">{{ section.description }}</span>
+	</span>
 </div>
-{% endmacro %} #}

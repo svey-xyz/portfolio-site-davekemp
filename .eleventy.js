@@ -54,6 +54,8 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addShortcode("bundlePointer", bundlePointer);
 
 	eleventyConfig.addPassthroughCopy({ "./src/_includes/assets/robots.txt": "robots.txt" });
+	eleventyConfig.addPassthroughCopy({ "public": "hosting" });
+
 
 	eleventyConfig.addWatchTarget("./src/style/**/*"); // doesn't work with eleventy config not at root
 

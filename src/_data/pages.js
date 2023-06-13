@@ -39,8 +39,8 @@ module.exports = async () => {
           	) | order(priority desc),
         	"archiveItems":select(
           		(count(projectsArchive.tags) > 0) =>
-            		*[_type == "project" && count((tags[]._ref)[@ in ^.^.projectsArchive.tags[]._ref]) > 0]${projectArchiveItemQuery},
-          		*[_type == "project"]${projectArchiveItemQuery}
+            		*[_type == "project" && count((tags[]._ref)[@ in ^.^.projectsArchive.tags[]._ref]) > 0 && hidden != true]${projectArchiveItemQuery},
+          		*[_type == "project" && hidden != true]${projectArchiveItemQuery}
         	)
       	},
 		(archiveType == "textsArchive") => {
@@ -50,8 +50,8 @@ module.exports = async () => {
           	) | order(priority desc),
         	"archiveItems":select(
           		(count(textsArchive.tags) > 0) =>
-            		*[_type == "textDocument" && count((tags[]._ref)[@ in ^.^.textsArchive.tags[]._ref]) > 0]${textArchiveItemQuery},
-          		*[_type == "textDocument"]${textArchiveItemQuery}
+            		*[_type == "textDocument" && count((tags[]._ref)[@ in ^.^.textsArchive.tags[]._ref]) > 0 && hidden != true]${textArchiveItemQuery},
+          		*[_type == "textDocument" && hidden != true]${textArchiveItemQuery}
         	)
       	}
 	}`

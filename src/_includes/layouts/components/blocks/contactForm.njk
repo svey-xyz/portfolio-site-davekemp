@@ -25,56 +25,45 @@
 		{{ site.about.email }}
 	</a>
 
-	<form id="formContainer" class="vldx-form w-full max-w-prose-full mb-8" name="{{ formName | slug }}"
-		method="POST" action="https://contact.svey.xyz/" data-vldx-success-message="{{ successMessage }}" data-vldx-recaptcha="6LfhR1ohAAAAABJFXPocs9NyudnQgvZNDH1DtQ3c">
-
-		<input hidden aria-hidden="true" type="hidden" name="receiver" value="{{ site.about.email }}" />
-
-		<div hidden aria-hidden="true">
-			<label>
-				Don’t fill this out if you're human: 
-				<input name="bot-field" class="vldx-honeypot"/>
-			</label>
-		</div>
+	<form id="formContainer" class="w-full max-w-prose-full mb-8" name="{{ formName | slug }}"
+		method="POST" action="{{ pageData.slug | slug }}/?submit=success" netlify>
 		
 		<div class="w-full mb-8">
 			<label for="name" class="block mb-4 tracking-wider font-medium leading-none">Name <span class="align-super text-failure-accent">*</span></label>
 			<input type="text" id="name" name="name" placeholder="Name"
-				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text outline-2 outline-primary-border outline focus:outline-primary-border
+				class="block p-2 w-full bg-secondary-bg text-primary-text outline-2 !outline-primary-border outline
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
-				data-vldx-rules="required" />
+			required/>
 		</div>
 
 		<div class="w-full mb-8">
 			<label for="email" class="block mb-4 tracking-wider font-medium leading-none">Email <span class="align-super text-failure-accent">*</span></label>
 			<input type="email" id="email" name="email" placeholder="Email"
-				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text outline-2 outline-primary-border outline focus:outline-primary-border
-					invalid:outline invalid:outline-2 invalid:outline-failure-accent" 
-				data-vldx-rules="email|required" />
+				class="block p-2 w-full bg-secondary-bg text-primary-text outline-2 outline-primary-border outline
+					invalid:outline invalid:outline-2 invalid:outline-failure-accent
+					placeholder-shown:!outline-primary-border" 
+			required/>
 		</div>
 
 		<div class="w-full mb-8">
 			<label for="message" class="block mb-4 tracking-wider font-medium leading-none">Message <span class="align-super text-failure-accent">*</span></label>
 			<textarea id="message" name="message" rows="6" maxlength="3000" placeholder="Message"
-				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text outline-2 outline-primary-border outline focus:outline-primary-border
+				class="block p-2 w-full bg-secondary-bg text-primary-text outline-2 !outline-primary-border outline focus:outline-primary-border
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
-				data-vldx-rules="required" ></textarea>
+			required></textarea>
 		</div>
 
 		<div class="block md:inline mb-8">
 			<div class="relative md:inline-block md:pr-16">
-				<button class="vldx-submit g-recaptcha relative block px-12 py-2 w-full bg-secondary-bg text-primary-text font-medium overflow-hidden 
-					active:opacity-60
-					outline-2 outline-primary-border outline focus:outline-primary-border"
-        			data-callback='onSubmit' 
-       				data-action='submit'>
+				<button class="relative block px-12 py-2 w-full bg-secondary-bg text-primary-text font-medium overflow-hidden 
+					active:opacity-60 outline-2 outline-primary-border outline focus:outline-primary-border">
 						<span class="relative z-10">Send</span>
 				</button>
 			</div>	
 		</div>
 
 		<div class="block md:inline mb-12">
-			<span class="vldx-response hidden font-bold"></span>
+			<span id="successMessage" class="hidden font-bold text-success-accent">{{ successMessage }}</span>
 		</div>
 	</form>
 </div>

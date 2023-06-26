@@ -11,6 +11,7 @@ module.exports = async () => {
               defined(date.endDate) => date.endDate,
               date.date
             ),
+			"description":description[]{..., asset->},
 			links[]{
               	(_type == "externalLink") => {
                 	"url":url,

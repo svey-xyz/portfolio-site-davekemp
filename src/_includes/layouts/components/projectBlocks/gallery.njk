@@ -1,4 +1,4 @@
-<div class="masonry-grid -mx-2">
+<div class="w-full">
 	{% set imageID = 0 %}
 	{% asyncEach image in section.gallery %}
 		{% set altText %}
@@ -9,7 +9,7 @@
 			{% endif %}
 		{% endset %}
 
-		<div class="gallery-image flex flex-col px-2 pb-4"
+		<div class="gallery-image flex flex-col pb-4"
 			data-imageID="{{ imageID }}" data-imageTitle="{{ image.asset.title }}" data-imageDescription="{{ image.asset.description }}">
 			{% image image, "relative m-0 w-full h-auto min-w-full cursor-pointer", altText %}
 			<span class="font-light mt-4 text-primary-text">

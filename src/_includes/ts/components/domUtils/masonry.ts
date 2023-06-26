@@ -19,4 +19,5 @@ export const mount = (container: Element) => {
 		},
 	});
 	container.classList.remove('masonry-grid');
+	masonry.refresh();
 }

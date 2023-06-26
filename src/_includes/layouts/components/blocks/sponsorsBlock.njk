@@ -1,7 +1,7 @@
 <div class="main-padding w-full flex flex-col mt-12 mb-6">
 	{% if site.about.sponsors | length > 0 %}
 		<span class="text-primary-text">{{ section.message }}</span>
-		<div class="max-w-xs mt-6 border-solid border-2 bg-white border-medium-accent shadow-inner-dark">
+		<div class="max-w-xs mt-6 border-solid border-2 border-primary-bg dark:bg-white dark:border-medium-accent dark:shadow-inner-dark">
 			{% for sponsor in site.about.sponsors %}
 				<a aria-label="Link to: {{ sponsor.name }}" href="{{ sponsor.url }}" target="_blank" rel="noreferrer noopener">
 					{% set sponsorAltText %}

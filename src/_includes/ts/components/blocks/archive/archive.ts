@@ -13,9 +13,11 @@ let masonry: FlexMasonry
 
 export const mount = (container: Element) => {
 	archiveContainer = <HTMLElement>container;
-	initMasonry();
 
 	initializeArchive();
+
+	initMasonry();
+
 }
 
 function initMasonry(): FlexMasonry | null {
@@ -38,6 +40,9 @@ function initMasonry(): FlexMasonry | null {
 		},
 	});
 	container?.classList.remove('masonry-grid');
+	document.addEventListener("DOMContentLoaded", function () {
+		masonry.refresh();
+	})
 	return masonry;
 }
 

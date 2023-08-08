@@ -8,18 +8,19 @@
 	<div class="relative select-none py-4">
 
 		{% if (pageData.content.filterable) %}
+			{# Hidden tags are filtered out in query #}
 			{% for tag in pageData.content.tags %}
 				{% if pageData.content.allTagPriority >= tag.priority and not allButtonPlaced %}
 					<button class="tag-button text-xl font-medium text-primary-text" data-tag="all" title="All">
 						all
-					</button><span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>
+					</button>
+					{% if not loop.last %}<span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>{% endif %}
 					{% set allButtonPlaced = true %}
 				{% endif %}
-				{% if tag.priority > -1 %}
-					<button class="tag-button text-xl font-medium text-primary-text" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
-						{{ tag.title | slug }}
-					</button><span class="text-xl font-medium text-primary-text">{% if not loop.last %},{% endif %}&nbsp&nbsp</span>
-				{% endif %}
+				<button class="tag-button text-xl font-medium text-primary-text" data-tag="{{ tag.title | slug }}" title="Sort for: {{ tag.title }}">
+					{{ tag.title | slug }}
+				</button>
+				{% if not loop.last %}<span class="text-xl font-medium text-primary-text">,&nbsp&nbsp</span>{% endif %}
 			{% endfor %}
 		{% endif %}
 

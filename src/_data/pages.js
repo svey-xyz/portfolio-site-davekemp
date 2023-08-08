@@ -35,8 +35,8 @@ module.exports = async () => {
       	(archiveType == "projectsArchive") => {
         	"tags":select(
           		count(projectsArchive.tags) > 0 => projectsArchive.tags[]->,
-            	*[_type == "projectTag"]
-          	) | order(priority desc),
+            	*[_type == "projectTag" && priority > -1]
+          	) | order(priority desc, title asc),
         	"archiveItems":select(
           		(count(projectsArchive.tags) > 0) =>
             		*[_type == "project" && count((tags[]._ref)[@ in ^.^.projectsArchive.tags[]._ref]) > 0 && hidden != true]${projectArchiveItemQuery},
@@ -46,8 +46,8 @@ module.exports = async () => {
 		(archiveType == "textsArchive") => {
         	"tags":select(
           		count(textsArchive.tags) > 0 => textsArchive.tags[]->,
-            	*[_type == "textTag"]
-          	) | order(priority desc),
+            	*[_type == "textTag" && priority > -1]
+          	) | order(priority desc, title asc),
         	"archiveItems":select(
           		(count(textsArchive.tags) > 0) =>
             		*[_type == "textDocument" && count((tags[]._ref)[@ in ^.^.textsArchive.tags[]._ref]) > 0 && hidden != true]${textArchiveItemQuery},

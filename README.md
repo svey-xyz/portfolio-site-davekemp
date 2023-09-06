@@ -1,5 +1,5 @@
 # `Portfolio Site for Dave Kemp`
-This project has related repos- [CMS](https://github.com/svey-xyz/davekemp-sanity-studio), and [serverless functions](https://github.com/).
+This project has related repos- [CMS](https://github.com/svey-xyz/davekemp-sanity-studio).
 
 ## `Table of Contents 📑`
 - [Tools 🧰](#what-tools-have-i-used-)
@@ -23,15 +23,11 @@ This project has related repos- [CMS](https://github.com/svey-xyz/davekemp-sanit
 
 #### [Sanity](https://www.sanity.io/)
 
-#### [Cloudflare](https://www.cloudflare.com/)
+#### [Netlify](https://www.netlify.com/)
 
 ## Design Philosophy 🖌️
 
-#### Visual Design
-*This section to come later...*
-
-#### Production Design
-*This section to come later...*
+Designed in collaboration with Dave Kemp.
 
 ## Notes 📔
 Personal notes for development...

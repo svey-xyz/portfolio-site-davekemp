@@ -15,6 +15,7 @@ plugins/
 .env.development
 *.env
 cachedContent.json
+config/config.env
 
 # Local Netlify folder
 .netlify

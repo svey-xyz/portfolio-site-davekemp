@@ -7,6 +7,7 @@
 		"clean:build": "rimraf www",
 		"clean:cache": "rimraf cache/*",
 		"clean:data": "rimraf cache/data/*",
+		"clean": "run-s clean:*",
 		"dev:webpack": "NODE_ENV=development webpack --config ./config/webpack.config.js --watch --progress",
 		"dev:postcss": "NODE_ENV=development TAILWIND_MODE=watch postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css --watch --verbose",
 		"dev:eleventy": "NODE_ENV=development eleventy --serve",

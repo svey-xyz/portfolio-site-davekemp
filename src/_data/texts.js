@@ -28,7 +28,15 @@ module.exports = async () => {
                 	)
               	},
               	(_type == "internalLink") => {
-                	"url":reference->slug.fullUrl,
+                	"url":select(
+                  		(reference->._type == "textDocument") =>
+                          select(
+                            (reference->.textType == 'fileText') => reference->.fileText.file.asset->.url,
+                            (reference->.textType == 'externalText') => reference->.externalText.url,
+                            (reference->.textType == 'internalText') => reference->.slug.fullUrl
+                          ),
+                  		reference->slug.fullUrl
+                	),
                 	"linkText":select(
                   		defined(linkText) => linkText,
                   		reference->title

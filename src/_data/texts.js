@@ -7,19 +7,35 @@ module.exports = async () => {
 			...,
 			"tags":tags[]->,
 			"link":select(
-              textType == "internalText" => '/' + (*[_id == "navigation"] {
+        textType == "internalText" => '/' + (*[_id == "navigation"] {
                 "textsPrimaryArchiveSlug":textsPage->slug.current
               }.textsPrimaryArchiveSlug)[0] + '/' + slug.current,
               textType == "externalText" => externalText.link.url,
               textType == "fileText" => fileText.file.asset->.url
             ),
-		} | order(date desc),
-		"internalTexts":*[_type == "textDocument" && textType == "internalText"]{
-			...,
-			"tags":tags[]->,
-			"slug":slug.current,
-			"text": internalText.text[]{..., asset->}
-		} | order(date desc),
+					} | order(date desc),
+			"internalTexts":*[_type == "textDocument" && textType == "internalText"]{
+				...,
+				"tags":tags[]->,
+				"slug":slug.current,
+				"text": internalText.text[]{..., asset->},
+				links[]{
+              	(_type == "externalLink") => {
+                	"url":url,
+                	"linkText":select(
+                  		defined(linkText) => linkText,
+                  		url
+                	)
+              	},
+              	(_type == "internalLink") => {
+                	"url":reference->slug.fullUrl,
+                	"linkText":select(
+                  		defined(linkText) => linkText,
+                  		reference->title
+                	)
+              	},
+            },
+			} | order(date desc),
 		"tags":*[_type == "textTag"] | order(priority desc)
 	}`
 
